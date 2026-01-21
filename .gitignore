@@ -1,0 +1,35 @@
+# .gitignore
+
+## Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+## Env
+.env
+.env.local
+.env.*.local
+
+## Build
+dist/
+build/
+out/
+*.log
+
+## IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Test
+coverage/
+.nyc_output/
