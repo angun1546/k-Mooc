@@ -1043,12 +1043,212 @@ button {
   }
 }
 /* popup-------------------------------- */
-.popup {
+/* 팝업 오버레이 */
+.popup-overlay {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.popup-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 팝업 모달 */
+.popup-modal {
   background: white;
-  width: 30%;
-  left: 50%; 
-  font-size: 1.2em;
-  transform: translateX(-50%);
+  border-radius: 16px;
+  box-shadow:
+    0px 20px 24px -4px rgba(10, 13, 18, 0.1),
+    0px 8px 8px -4px rgba(10, 13, 18, 0.04);
+  width: 400px;
+  max-width: 90vw;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.popup-overlay.show .popup-modal {
+  transform: scale(1);
+}
+
+/* 팝업 헤더 */
+.popup-header {
+  padding: 24px 24px 0;
+  position: relative;
+}
+
+/* 아이콘 영역 */
+.featured-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #e6f2ff;
+  border-radius: 28px;
+  position: relative;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-icon::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 8px solid #f0f7ff;
+  border-radius: 32px;
+  pointer-events: none;
+}
+
+.icon-save {
+  width: 24px;
+  height: 24px;
+}
+
+/* 텍스트 영역 */
+.popup-text {
+  margin-bottom: 32px;
+}
+
+.popup-title {
+  font-family: "Inter", "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #181d27;
+  margin: 0 0 4px 0;
+}
+
+.popup-description {
+  font-family: "Inter", "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #535862;
+  margin: 0;
+}
+
+/* 닫기 버튼 */
+.btn-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn-close:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* 팝업 액션 버튼 */
+.popup-actions {
+  padding: 0 24px 24px;
+  display: flex;
+  gap: 12px;
+}
+
+/* 공통 버튼 스타일 */
+.btn {
+  flex: 1;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: "Inter", "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid;
+  position: relative;
+}
+
+/* Cancel 버튼 */
+.btn-cancel {
+  background-color: white;
+  color: #414651;
+  border-color: #d5d7da;
+  box-shadow: 0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+}
+
+.btn-cancel:hover {
+  background-color: #f9fafb;
+}
+
+/* Primary 버튼 (오늘 하루 보지 않기) */
+.btn-primary {
+  background-color: #0066cc;
+  color: white;
+  border-color: #0066cc;
+  box-shadow: 0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+}
+
+.btn-primary:hover {
+  background-color: #0052a3;
+  border-color: #0052a3;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .popup-modal {
+    width: 90vw;
+    margin: 0 20px;
+  }
+
+  .popup-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
