@@ -1,0 +1,111 @@
+문제가 발생한 이유는 시멘틱(semantic)한 문서 구조에서 제목 태그(h1~h6)가 한 단계 이상 건너뛰면 접근성 검사기(스크린리더 등)가 문서 구조를 해석하기 어려워서입니다. 예를 들어 h1 다음에 바로 h4가 나오면 h2/h3가 빠져서 "건너뛴" 것으로 간주됩니다. 해결 방법은 문서의 논리적 구조에 맞게 제목 레벨을 조정하거나, 시각적 스타일은 CSS로 유지하면서 의미론적 수준만 바꾸는 것입니다.
+
+수정 원칙(권장)
+
+페이지 최상단: h1
+각 주요 섹션(공지, 추천강좌, 인기강좌 등)은 h2
+섹션 내부의 항목 제목(강좌 제목, 쇼츠 제목 등)은 h3
+더 세부 항목이 필요하면 h4 이상을 사용
+아래에 index.html에서 제목 레벨만 접근성 규칙에 맞게 수정한 전체 파일을 붙입니다 (원본 URL 포함). 변경사항 요약:
+
+주요 섹션 제목들을 h2로 통일 (notice, course, popular, microlearning, shorts, announcement 등)
+카드/아이템 제목(h4/h5)이 섹션(h2) 바로 아래로 오도록 h3로 조정
+다른 마크업/텍스트는 그대로 유지
+
+추가 팁
+
+시각적으로는 기존 스타일을 유지하고 싶다면 HTML 제목 레벨만 바꾸고 CSS에서 해당 클래스(.section-title, .course-title 등)에 스타일을 적용하면 됩니다.
+만약 레이아웃상 섹션 제목을 시맨틱 레벨로 바꿀 수 없다면(정말 필요한 경우) aria-level을 사용한 접근(예: role="heading" aria-level="2")으로 보완할 수 있지만, ��능한 한 표준 h1~h6를 사용하는 편이 권장됩니다.
+
+오류 부분 2
+
+오류들은 모두 지금 들어있는 SVG의 잘못된/불완전한 구문 때문에 발생합니다. index.html에 있는 해당 <path> 요소의 d 속성 값이 "[...]" 같은 자리표시(placeholder)로 잘려 있고, 그 때문에 d 속성의 큰따옴표가 닫히지 않아 브라우저(또는 HTML 검사기)가 다음에 나오는 stroke=... 를 속성 이름의 일부로 해석하여 "공백 없음", "속성 이름에 따옴표" 등 여러 에러를 내고 있습니다. 또한 d 속성 내부에 [...] 같은 문자는 path 데이터 문법에 맞지 않아 "Bad value for attribute d" 오류도 발생합니다.
+
+무엇이 문제인지와 고치는 방법:
+
+문제 원인
+d="…[...]" 처럼 경로 데이터가 잘려 있거나 임시 텍스트가 들어가서 d 속성의 값이 유효한 SVG path 데이터가 아니며, 큰따옴표(")가 닫히지 않았을 가능성이 큽니다.
+속성 사이에는 공백이 필요합니다. 닫는 따옴표가 없으면 다음 속성(stroke=...)이 같은 이름으로 붙어 보이므로 "No space between attributes" 에러가 납니다.
+d 속성 내부에 [ 또는 ] 같은 문자가 있으면 path 문법(C 명령 등)과 맞지 않아 "Bad value for attribute d" 가 납니다.
+고치는 방법 (선택지)
+A) 원본(정상) SVG path 데이터를 복구하는 방법
+만약 원래의 올바른 path 데이터가 있다면, d 속성 값을 올바르게 채우고 큰따옴표를 닫으세요. 예: <path d="M7 3 V6.4 C7 6.96 7.24 7.108 7.454 7.546 ..." stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> (중간에 [...] 절대 넣지 말 것)
+
+B) 간단히 교체(권장, 복구 불가능할 때)
+복잡한 icon이 필요 없으면 문제가 되는 SVG 블록을 유효한 간단한 SVG로 바꿔 버리면 됩니다. 예(실제 동작하는 대체 아이콘):
+<svg class="icon-save" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7 3v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V3H7z" stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M7 14h10v6H7z" stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+이 예는 닫는 따옴표와 속성 간 공백이 모두 올바르게 들어가 있으므로 에러가 사라집니다.
+
+C) 임시 텍스트(예: [...])를 HTML 주석으로 옮기기
+
+실제 수정 시 체크리스트
+d="..." 값이 유효한 path 문자열인지 확인.
+큰따옴표(")가 열고 닫혔는지 확인.
+속성들(stroke, stroke-width 등) 사이에 공백(또는 줄바꿈)이 있는지 확인.
+<svg> 태그에 xmlns="http://www.w3.org/2000/svg" 를 추가하면 일부 검사기에서 더 안정적입니다.
+변경 후 브라우저에서 표시 확인 및 W3C validator(또는 HTML linter)를 돌려 재확인.
+예시 — 문제 있는 원본(문제)과 고친 예시 비교 문제(발생 원인):
+
+<!-- 잘못된 예: d 속성 안에 [...] 가 있고 닫는 따옴표가 사라짐 -->
+<path d="M7 3V6.4C7 ... C16.6422 [...]                              stroke="#0066cc" stroke-width="2"/>
+
+수정후
+<svg class="icon-save" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7 3v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V3H7z" stroke="#0066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+3차 오류 수정안
+
+Error: Every active role=tab element must have a corresponding role=tabpanel element.
+
+From line 103, column 9; to line 103, column 74
+
+>↩        <button class="tab-button active" role="tab" aria-selected="true">전체</bu
+
+role="tab"이 있는 요소는 반드시 그 탭이 제어하는 패널(panel)에 대응해야 합니다. 구체적으로:
+탭 요소(button)에는 aria-controls 속성으로 제어 대상 패널의 id를 가리켜야 하고,
+해당 패널에는 role="tabpanel"과 aria-labelledby로 탭의 id를 가리���야 합니다.
+현재 코드에는 role="tab"만 있고 대응하는 role="tabpanel"이 없어서 검사기가 "Every active role=tab element must have a corresponding role=tabpanel element." 오류를 냈습니다.
+해결 방법(무난하고 접근성에 맞는 방법)
+
+탭 버튼에 id와 aria-controls를 추가하고,
+탭이 보여주는 콘텐츠 컨테이너(이 경우 페이지의 main)를 role="tabpanel"로 표시하고 aria-labelledby로 탭 id를 가리키도록 합니다.
+
+오류 수정 4
+
+role="tabpanel"은 탭 컴포넌트의 일부로써 "탭 목록(tablist) + 탭(tab) + 탭패널(tabpanel)" 구조 내에 있어야 합니다.
+검사기가 문제로 보는 이유는 main 요소에 role="tabpanel"을 직접 붙이면 그 요소가 문서의 주 역할(role="main")과 혼동될 수 있고, 일반적인 탭 구조 규칙(탭과 패널의 관계)을 어기게 되기 때문입니다.
+올바른 방법은 main을 문서의 주 콘텐츠로 남겨두고, 탭이 제어하는 패널(실제 탭으로 보여줄 부분)은 별도의 요소(예: div id="panel-all")에 role="tabpanel"을 주는 것입니다. 탭은 aria-controls로 그 패널의 id를 가리키고, 패널은 aria-labelledby로 탭의 id를 가리켜야 합니다.
+수정 방법 (권장, 최소 변경)
+
+main에서 role="tabpanel" 제거(또는 role="main" 유지).
+탭 버튼의 aria-controls 값을 패널 id로 바꿈(e.g. aria-controls="panel-all").
+기존 main 내부에 탭이 제어할 부분을 감싸는 div(또는 section)를 추가하고 id="panel-all" role="tabpanel" aria-labelledby="tab-all" 를 설정.
+
+<main id="main" class="main" role="main">
+  <!-- 탭 리스트: 탭은 panel의 id를 aria-controls로 가리킴 -->
+  <div class="tablist" role="tablist" aria-label="탭">
+    <button id="tab-all" class="tab-button active" role="tab" aria-selected="true" aria-controls="panel-all">전체</button>
+  </div>
+
+  <!-- 탭 패널: role=tabpanel은 탭이 제어하는 패널에만 적용 -->
+  <div id="panel-all" role="tabpanel" aria-labelledby="tab-all">
+    <!-- 기존 main 내부 콘텐츠 (배너, 섹션 등) 를 이 안으로 옮기거나
+         패널에 보여줄 부분만 감싼다 -->
+    <!-- 예: -->
+    <section class="banner-section" aria-label="배너">
+      ...
+    </section>
+
+    <section class="notice-section" aria-labelledby="noticeTitle">
+      ...
+    </section>
+
+    <!-- 나머지 섹션들 -->
+  </div>
+</main>
+

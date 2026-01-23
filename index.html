@@ -15,52 +15,46 @@
   <body>
     <!-- 팝업 오버레이 -->
     <div id="popupOverlay" class="popup-overlay">
-        <!-- 팝업 모달 -->
-        <div class="popup-modal">
-            <!-- 팝업 헤더 -->
-            <div class="popup-header">
-                <!-- 아이콘 영역 -->
-                <div class="featured-icon">
-                    <svg class="icon-save" viewBox="0 0 24 24" fill="none">
-                        <path d="M7 3V6.4C7 6.96005 7 7.24008 7.10899 7.45399C7.20487 7.64215 7.35785 7.79513 7.54601 7.89101C7.75992 8 8.03995 8 8.6 8H15.4C15.9601 8 16.2401 8 16.454 7.89101C16.6422 7.79513 16.7951 7.64215 16.891 7.45399C17 7.24008 17 6.96005 17 6.4V4M17 21V14.6C17 14.0399 17 13.7599 16.891 13.546C16.7951 13.3578 16.6422 13.2049 16.454 13.109C16.2401 13 15.9601 13 15.4 13H8.6C8.03995 13 7.75992 13 7.54601 13.109C7.35785 13.2049 7.20487 13.3578 7.10899 13.546C7 13.7599 7 14.0399 7 14.6V21M21 9.32548V16.2C21 17.8802 21 18.7202 20.673 19.362C20.3854 19.9265 19.9265 20.3854 19.362 20.673C18.7202 21 17.8802 21 16.2 21H7.8C6.11984 21 5.27976 21 4.63803 20.673C4.07354 20.3854 3.6146 19.9265 3.32698 19.362C3 18.7202 3 17.8802 3 16.2V7.8C3 6.11984 3 5.27976 3.32698 4.63803C3.6146 4.07354 4.07354 3.6146 4.63803 3.32698C5.27976 3 6.11984 3 7.8 3H14.6745C15.1637 3 15.4083 3 15.6385 3.05526C15.8425 3.10425 16.0376 3.18506 16.2166 3.29472C16.4184 3.4184 16.5914 3.59135 16.9373 3.93726L20.0627 7.06274C20.4086 7.40865 20.5816 7.5816 20.7053 7.78343C20.8149 7.96237 20.8957 8.15746 20.9447 8.36154C21 8.59171 21 8.8363 21 9.32548Z" 
-                              stroke="#0066cc" 
-                              stroke-width="2" 
-                              stroke-linecap="round" 
-                              stroke-linejoin="round"/>
-                    </svg>
-                </div>
+      <!-- 팝업 모달 -->
+      <div class="popup-modal" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+        <!-- 팝업 헤더 -->
+        <div class="popup-header">
+          <!-- 아이콘 영역 -->
+          <div class="featured-icon" aria-hidden="true">
+            <!-- 유효한 SVG 아이콘으로 교체 -->
+            <svg class="icon-save" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+              <path d="M6 3h10l4 4v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" stroke="#0066cc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 12h8M8 16h8" stroke="#0066cc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
 
-                <!-- 텍스트 영역 -->
-                <div class="popup-text">
-                    <h2 class="popup-title">warning!</h2>
-                    <p class="popup-description">이 프로젝트는 구직용 포트폴리오 입니다. k-mooc와 무관함을 알려드립니다.</p>
-                </div>
+          <!-- 텍스트 영역 -->
+          <div class="popup-text">
+            <h2 id="popupTitle" class="popup-title">warning!</h2>
+            <p class="popup-description">이 프로젝트는 구직용 포트폴리오 입니다. k-mooc와 무관함을 알려드립니다.</p>
+          </div>
 
-                <!-- 닫기 버튼 -->
-                <button class="btn-close" id="btnClose" aria-label="닫기">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M18 6L6 18M6 6L18 18" 
-                              stroke="#717680" 
-                              stroke-width="2" 
-                              stroke-linecap="round" 
-                              stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- 팝업 액션 버튼 -->
-            <div class="popup-actions">
-                <button class="btn btn-cancel" id="btnCancel">Cancel</button>
-                <button class="btn btn-primary" id="btnHideToday">오늘 하루 보지 않기</button>
-            </div>
+          <!-- 닫기 버튼 -->
+          <button class="btn-close" id="btnClose" aria-label="닫기">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18" aria-hidden="true">
+              <path d="M18 6L6 18M6 6L18 18" stroke="#717680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
+
+        <!-- 팝업 액션 버튼 -->
+        <div class="popup-actions">
+          <button class="btn btn-cancel" id="btnCancel">Cancel</button>
+          <button class="btn btn-primary" id="btnHideToday">오늘 하루 ��지 않기</button>
+        </div>
+      </div>
     </div>
 
     <script src="popup-script.js"></script>
-    
+
     <!-- 본문 바로가기 -->
     <div class="skip-nav">
-      <a href="#main">본문 바로가기</a>
+      <a href="#panel-all">본문 바로가기</a>
     </div>
 
     <!-- 헤더 -->
@@ -70,7 +64,7 @@
           <a href="/">K-MOOC</a>
         </h1>
 
-        <nav class="nav">
+        <nav class="nav" aria-label="주요 메뉴">
           <button class="nav-toggle">강좌</button>
           <ul class="nav-list">
             <li class="nav-item"><a href="#">매치업</a></li>
@@ -92,546 +86,421 @@
     </header>
 
     <!-- 메인 콘텐츠 -->
-    <main id="main" class="main">
-      <!-- 배너 섹션 -->
-      <section class="banner-section">
-        <div class="banner-item">
-          <img
-            src="https://placehold.co/1920x400/0036ce/ffffff?text=K-MOOC+Banner"
-            alt="배너 이미지"
-            class="banner-image"
-          />
-        </div>
-      </section>
-
-      <!-- 탭 리스트 -->
-      <div class="tablist">
-        <button class="tab-button active">전체</button>
+    <main id="main" class="main" role="main">
+      <!-- 탭 리스트: 탭은 panel-all을 제어 -->
+      <div class="tablist" role="tablist" aria-label="탭">
+        <button id="tab-all" class="tab-button active" role="tab" aria-selected="true" aria-controls="panel-all">전체</button>
       </div>
 
-      <!-- 최신 공고 -->
-      <section class="notice-section">
-        <div class="notice-container">
-          <h4 class="notice-title">공지사항</h4>
-          <div class="notice-item">
-            <a href="#" class="notice-link">
-              <strong
-                >[공고] 2025년 매치업(Match業) 우수사례 공모전 공고</strong
-              >
-              <span class="notice-date">2025.10.01</span>
-            </a>
+      <!-- 탭 패널: 탭이 제어하는 실제 콘텐츠 -->
+      <div id="panel-all" role="tabpanel" aria-labelledby="tab-all">
+        <!-- 배너 섹션 -->
+        <section class="banner-section" aria-label="배너">
+          <div class="banner-item">
+            <img
+              src="https://placehold.co/1920x400/0036ce/ffffff?text=K-MOOC+Banner"
+              alt="배너 이미지"
+              class="banner-image"
+            />
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 추천 강좌 -->
-      <section class="course-section">
-        <div class="section-container">
-          <h3 class="section-title">
-            <strong class="highlight">K-MOOC</strong>에서 추천하는 강좌 리스트
-          </h3>
+        <!-- 탭 버튼(시각적 탭)을 위한 보조 UI(필요하면 확장) -->
+        <div class="tablist" role="tablist" aria-hidden="true" style="display:none;"></div>
 
-          <div class="course-grid">
-            <article class="course-card">
-              <div class="course-image">
-                <img
-                  src="https://placehold.co/257x160/cccccc/666666?text=AI+Language"
-                  alt="강좌 이미지"
-                />
-                <span class="badge badge-active">진행중</span>
-                <span class="badge badge-certificate">이수증</span>
-              </div>
-              <h4 class="course-title">인공지능 시대의 언어학 입문</h4>
-              <p class="course-professor">송상헌</p>
-              <p class="course-university">고려대학교</p>
-              <p class="course-period">2025.09.09 ~ 2025.12.30</p>
-            </article>
-
-            <article class="course-card">
-              <div class="course-image">
-                <img
-                  src="https://placehold.co/257x160/cccccc/666666?text=Japanese+Food"
-                  alt="강좌 이미지"
-                />
-                <span class="badge badge-active">진행중</span>
-                <span class="badge badge-certificate">이수증</span>
-              </div>
-              <h4 class="course-title">일본 음식문화의 이해</h4>
-              <p class="course-professor">정의상</p>
-              <p class="course-university">조선대학교</p>
-              <p class="course-period">2025.08.04 ~ 2025.12.31</p>
-              <div class="course-tags">
-                <span class="tag">조선대학교</span>
-                <span class="tag">일본</span>
-                <span class="tag">일본문화</span>
-              </div>
-            </article>
-
-            <article class="course-card">
-              <div class="course-image">
-                <img
-                  src="https://placehold.co/257x160/cccccc/666666?text=Environment"
-                  alt="강좌 이미지"
-                />
-                <span class="badge badge-active">진행중</span>
-                <span class="badge badge-certificate">이수증</span>
-              </div>
-              <h4 class="course-title">환경의 역습! 원인과 우리의 대처</h4>
-              <p class="course-professor">배성준</p>
-              <p class="course-university">건국대학교</p>
-              <p class="course-period">2025.09.01 ~ 2025.12.24</p>
-            </article>
-
-            <article class="course-card">
-              <div class="course-image">
-                <img
-                  src="https://placehold.co/257x160/cccccc/666666?text=Autonomous+Driving"
-                  alt="강좌 이미지"
-                />
-                <span class="badge badge-active">진행중</span>
-                <span class="badge badge-certificate">이수증</span>
-              </div>
-              <h4 class="course-title">자율주행제어 이론 및 실습</h4>
-              <p class="course-professor">한경석</p>
-              <p class="course-university">경북대학교</p>
-              <p class="course-period">2025.10.28 ~ 2026.01.27</p>
-              <div class="course-tags">
-                <span class="tag">자율주행</span>
-                <span class="tag">차량제어</span>
-                <span class="tag">자동차</span>
-                <span class="tag">교통</span>
-              </div>
-            </article>
+        <!-- 최신 공고 -->
+        <section class="notice-section" aria-labelledby="noticeTitle">
+          <div class="notice-container">
+            <h2 id="noticeTitle" class="notice-title">공지사항</h2>
+            <div class="notice-item">
+              <a href="#" class="notice-link">
+                <strong>[공고] 2025년 매치업(Match業) 우수사례 공모전 공고</strong>
+                <span class="notice-date">2025.10.01</span>
+              </a>
+            </div>
           </div>
+        </section>
 
-          <div class="carousel-controls">
-            <button class="carousel-btn carousel-prev">이전</button>
+        <!-- 추천 강좌 -->
+        <section class="course-section" aria-labelledby="recommendTitle">
+          <div class="section-container">
+            <h2 id="recommendTitle" class="section-title">
+              <strong class="highlight">K-MOOC</strong>에서 추천하는 강좌 리스트
+            </h2>
+
+            <div class="course-grid">
+              <article class="course-card">
+                <div class="course-image">
+                  <img
+                    src="https://placehold.co/257x160/cccccc/666666?text=AI+Language"
+                    alt="강좌 이미지"
+                  />
+                  <span class="badge badge-active">진행중</span>
+                  <span class="badge badge-certificate">이수증</span>
+                </div>
+                <h3 class="course-title">인공지능 시대의 언어학 입문</h3>
+                <p class="course-professor">송상헌</p>
+                <p class="course-university">고려대학교</p>
+                <p class="course-period">2025.09.09 ~ 2025.12.30</p>
+              </article>
+
+              <article class="course-card">
+                <div class="course-image">
+                  <img
+                    src="https://placehold.co/257x160/cccccc/666666?text=Japanese+Food"
+                    alt="강좌 이미지"
+                  />
+                  <span class="badge badge-active">진행중</span>
+                  <span class="badge badge-certificate">이수증</span>
+                </div>
+                <h3 class="course-title">일본 음식문화의 이해</h3>
+                <p class="course-professor">정의상</p>
+                <p class="course-university">조선대학교</p>
+                <p class="course-period">2025.08.04 ~ 2025.12.31</p>
+                <div class="course-tags">
+                  <span class="tag">조선대학교</span>
+                  <span class="tag">일본</span>
+                  <span class="tag">일본문화</span>
+                </div>
+              </article>
+
+              <article class="course-card">
+                <div class="course-image">
+                  <img
+                    src="https://placehold.co/257x160/cccccc/666666?text=Environment"
+                    alt="강좌 이미지"
+                  />
+                  <span class="badge badge-active">진행중</span>
+                  <span class="badge badge-certificate">이수증</span>
+                </div>
+                <h3 class="course-title">환경의 역습! 원인과 우리의 대처</h3>
+                <p class="course-professor">배성준</p>
+                <p class="course-university">건국대학교</p>
+                <p class="course-period">2025.09.01 ~ 2025.12.24</p>
+              </article>
+
+              <article class="course-card">
+                <div class="course-image">
+                  <img
+                    src="https://placehold.co/257x160/cccccc/666666?text=Autonomous+Driving"
+                    alt="강좌 이미지"
+                  />
+                  <span class="badge badge-active">진행중</span>
+                  <span class="badge badge-certificate">이수증</span>
+                </div>
+                <h3 class="course-title">자율주행제어 이론 및 실습</h3>
+                <p class="course-professor">한경석</p>
+                <p class="course-university">경북대학교</p>
+                <p class="course-period">2025.10.28 ~ 2026.01.27</p>
+                <div class="course-tags">
+                  <span class="tag">자율주행</span>
+                  <span class="tag">차량제어</span>
+                  <span class="tag">자동차</span>
+                  <span class="tag">교통</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="carousel-controls">
+              <button class="carousel-btn carousel-prev">이전</button>
+              <button class="carousel-btn carousel-next">다음</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 기관 로고 -->
+        <section class="partners-section" aria-label="참여기관">
+          <div class="partners-grid">
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+            <div class="partner-item">
+              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
+            </div>
+          </div>
+        </section>
+
+        <!-- 인기 강좌 -->
+        <section class="popular-section" aria-labelledby="popularTitle">
+          <div class="section-container">
+            <h2 id="popularTitle" class="section-title">서두르세요! 인기 강좌가 곧 시작합니다.</h2>
+
+            <div class="popular-grid">
+              <div class="popular-column">
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=IoT" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">IoT기술산업응용</h3>
+                    <p class="popular-date">2025.09.01 ~ 2025.12.19</p>
+                  </div>
+                </a>
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=Disease" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">인류와 감염병 이야기</h3>
+                    <p class="popular-date">2025.09.09 ~ 2025.12.16</p>
+                  </div>
+                </a>
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=Brain" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">공감의 뇌과학</h3>
+                    <p class="popular-date">2025.09.09 ~ 2025.12.16</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="popular-column">
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=Law" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">헌법: 갈등해결의 코드</h3>
+                    <p class="popular-date">2025.09.04 ~ 2025.12.17</p>
+                  </div>
+                </a>
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=Rights" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">기본권, 세상과 통하는 法</h3>
+                    <p class="popular-date">2025.09.04 ~ 2025.12.17</p>
+                  </div>
+                </a>
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=K-Culture" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">K-문화와 글로벌휴머니즘</h3>
+                    <p class="popular-date">2025.09.01 ~ 2025.12.14</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="popular-column">
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=Humanities" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">인문·사회계열 전공생을 위한 수학</h3>
+                    <p class="popular-date">2025.09.05 ~ 2025.12.12</p>
+                  </div>
+                </a>
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=Business" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">비즈니스 애널리틱스의 기초</h3>
+                    <p class="popular-date">2025.09.05 ~ 2025.12.18</p>
+                  </div>
+                </a>
+                <a href="#" class="popular-item">
+                  <img src="https://placehold.co/130x80/cccccc/666666?text=Geography" alt="강좌 썸네일" class="popular-thumb" />
+                  <div class="popular-content">
+                    <h3 class="popular-title">한국의 자연지리</h3>
+                    <p class="popular-date">2025.09.05 ~ 2025.12.18</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 마이크로러닝 -->
+        <section class="microlearning-section" aria-labelledby="microTitle">
+          <div class="section-container">
+            <h2 id="microTitle" class="section-title">
+              핵심스킬만을 집중적으로! 한번에 소화할수 있는 학습! 마이크로러닝과 함께 하세요
+            </h2>
+
+            <div class="tags-container">
+              <span class="tag-btn">#전기자기학</span>
+              <span class="tag-btn">#의료인공지능개론</span>
+              <span class="tag-btn">#문해력</span>
+              <span class="tag-btn">#수업</span>
+              <span class="tag-btn">#의료인공지능</span>
+              <span class="tag-btn">#인공지능</span>
+              <span class="tag-btn">#AI</span>
+              <span class="tag-btn">#전기</span>
+              <span class="tag-btn">#자기학</span>
+              <span class="tag-btn">#맥스부트</span>
+              <span class="tag-btn">#운동선수</span>
+              <span class="tag-btn">#체육</span>
+            </div>
+
+            <div class="micro-grid">
+              <article class="micro-card">
+                <div class="micro-image">
+                  <img src="https://placehold.co/256x160/cccccc/666666?text=Health" alt="마이크로 강좌" />
+                </div>
+                <h3 class="micro-title">5분 생활 보건(마이크로강좌)</h3>
+                <div class="micro-stats">
+                  <span class="views">조회수 2166</span>
+                  <span class="episodes">17회</span>
+                </div>
+              </article>
+
+              <article class="micro-card">
+                <div class="micro-image">
+                  <img src="https://placehold.co/256x160/cccccc/666666?text=Statistics" alt="마이크로 강좌" />
+                </div>
+                <h3 class="micro-title">경제통계학 1부 : 그림과 수치를 이용한 자료의 정리</h3>
+                <div class="micro-stats">
+                  <span class="views">조회수 4364</span>
+                  <span class="episodes">62회</span>
+                </div>
+              </article>
+
+              <article class="micro-card">
+                <div class="micro-image">
+                  <img src="https://placehold.co/256x160/cccccc/666666?text=ML" alt="마이크로 강좌" />
+                </div>
+                <h3 class="micro-title">누구나 할 수 있는 AI 머신 러닝</h3>
+                <div class="micro-stats">
+                  <span class="views">조회수 4488</span>
+                  <span class="episodes">35회</span>
+                </div>
+              </article>
+
+              <article class="micro-card">
+                <div class="micro-image">
+                  <img src="https://placehold.co/256x160/cccccc/666666?text=BigData" alt="마이크로 강좌" />
+                </div>
+                <h3 class="micro-title">빅데이터와 인공지능의 응용</h3>
+                <div class="micro-stats">
+                  <span class="views">조회수 1720</span>
+                  <span class="episodes">12회</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- 숏폼 영상 -->
+        <section class="shorts-section" aria-labelledby="shortsTitle">
+          <div class="section-container">
+            <div class="shorts-header">
+              <img src="https://placehold.co/40x40/0036ce/ffffff?text=SHORTS" alt="숏폼 아이콘" class="shorts-icon" />
+              <h2 id="shortsTitle" class="section-title">K-MOOC 숏폼 영상</h2>
+            </div>
+
+            <div class="shorts-grid">
+              <article class="shorts-card">
+                <video class="shorts-video" poster="https://placehold.co/257x457/cccccc/666666?text=Shorts1"></video>
+                <h3 class="shorts-title">숏폼 3주차-수정분개의 유래</h3>
+                <p class="shorts-university">한성대학교</p>
+              </article>
+
+              <article class="shorts-card">
+                <video class="shorts-video" poster="https://placehold.co/257x457/cccccc/666666?text=Shorts2"></video>
+                <h3 class="shorts-title">[8주차] 탐색적 데이터 분석</h3>
+                <p class="shorts-university">경북대학교</p>
+              </article>
+
+              <article class="shorts-card">
+                <video class="shorts-video" poster="https://placehold.co/257x457/cccccc/666666?text=Shorts3"></video>
+                <h3 class="shorts-title">[현대생활 속에 스민 수학, AI로 활용하기] 자동차를 얻을 수 있을까?</h3>
+                <p class="shorts-university">한성대학교</p>
+              </article>
+
+              <article class="shorts-card">
+                <video class="shorts-video" poster="https://placehold.co/257x457/cccccc/666666?text=Shorts4"></video>
+                <h3 class="shorts-title">AI 활용 숏폼 미디어 크리에이터로 수익내기_숏폼4</h3>
+                <p class="shorts-university">경일대학교</p>
+              </article>
+            </div>
+
             <button class="carousel-btn carousel-next">다음</button>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 기관 로고 -->
-      <section class="partners-section">
-        <div class="partners-grid">
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-          <div class="partner-item">
-            <img
-              src="https://placehold.co/108x124/e0e0e0/999999?text=Partner"
-              alt="기관 로고"
-            />
-          </div>
-        </div>
-      </section>
+        <!-- 공지사항 -->
+        <section class="announcement-section" aria-labelledby="announceTitle">
+          <div class="section-container">
+            <h2 id="announceTitle" class="section-title">공지사항</h2>
 
-      <!-- 인기 강좌 -->
-      <section class="popular-section">
-        <div class="section-container">
-          <h3 class="section-title">서두르세요! 인기 강좌가 곧 시작합니다.</h3>
+            <ul class="announcement-list">
+              <li class="announcement-item">
+                <a href="#">
+                  <span class="date">25.11.13</span>
+                  <strong>2025년 K-MOOC 수강신청 이벤트 실시 안내</strong>
+                </a>
+              </li>
+              <li class="announcement-item">
+                <a href="#">
+                  <span class="date">25.10.02</span>
+                  <strong>[공고] 2025년 재직자 AID 집중과정 우수사례 공모전 공고</strong>
+                </a>
+              </li>
+              <li class="announcement-item">
+                <a href="#">
+                  <span class="date">25.10.01</span>
+                  <strong>[공고] 2025년 매치업(Match業) 우수사례 공모전 ���고</strong>
+                </a>
+              </li>
+              <li class="announcement-item">
+                <a href="#">
+                  <span class="date">25.09.15</span>
+                  <strong>2025년 한국형 온라인 공개강좌(K-MOOC) 우수사례 공모전 공고</strong>
+                </a>
+              </li>
+              <li class="announcement-item">
+                <a href="#">
+                  <span class="date">25.08.27</span>
+                  <strong>2024년 한국형 온라인 공개강좌(K-MOOC) 블루리본 강좌 선정 ...</strong>
+                </a>
+              </li>
+            </ul>
 
-          <div class="popular-grid">
-            <div class="popular-column">
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=IoT"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">IoT기술산업응용</h5>
-                  <p class="popular-date">2025.09.01 ~ 2025.12.19</p>
-                </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link-item">
+                <img src="https://placehold.co/60x60/e0e0e0/999999?text=FAQ" alt="아이콘" />
+                <span>자주묻는질문</span>
               </a>
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=Disease"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">인류와 감염병 이야기</h5>
-                  <p class="popular-date">2025.09.09 ~ 2025.12.16</p>
-                </div>
+              <a href="#" class="quick-link-item">
+                <img src="https://placehold.co/60x60/e0e0e0/999999?text=News" alt="아이콘" />
+                <span>참여기관 소식</span>
               </a>
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=Brain"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">공감의 뇌과학</h5>
-                  <p class="popular-date">2025.09.09 ~ 2025.12.16</p>
-                </div>
+              <a href="#" class="quick-link-item">
+                <img src="https://placehold.co/60x60/e0e0e0/999999?text=Inquiry" alt="아이콘" />
+                <span>강좌문의</span>
               </a>
-            </div>
-
-            <div class="popular-column">
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=Law"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">헌법: 갈등해결의 코드</h5>
-                  <p class="popular-date">2025.09.04 ~ 2025.12.17</p>
-                </div>
+              <a href="#" class="quick-link-item">
+                <img src="https://placehold.co/60x60/e0e0e0/999999?text=Resources" alt="아이콘" />
+                <span>자료실</span>
               </a>
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=Rights"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">기본권, 세상과 통하는 法</h5>
-                  <p class="popular-date">2025.09.04 ~ 2025.12.17</p>
-                </div>
+              <a href="#" class="quick-link-item">
+                <img src="https://placehold.co/60x60/e0e0e0/999999?text=Guide" alt="아이콘" />
+                <span>이용가이드</span>
               </a>
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=K-Culture"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">K-문화와 글로벌휴머니즘</h5>
-                  <p class="popular-date">2025.09.01 ~ 2025.12.14</p>
-                </div>
-              </a>
-            </div>
-
-            <div class="popular-column">
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=Humanities"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">
-                    인문·사회계열 전공생을 위한 수학
-                  </h5>
-                  <p class="popular-date">2025.09.05 ~ 2025.12.12</p>
-                </div>
-              </a>
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=Business"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">비즈니스 애널리틱스의 기초</h5>
-                  <p class="popular-date">2025.09.05 ~ 2025.12.18</p>
-                </div>
-              </a>
-              <a href="#" class="popular-item">
-                <img
-                  src="https://placehold.co/130x80/cccccc/666666?text=Geography"
-                  alt="강좌 썸네일"
-                  class="popular-thumb"
-                />
-                <div class="popular-content">
-                  <h5 class="popular-title">한국의 자연지리</h5>
-                  <p class="popular-date">2025.09.05 ~ 2025.12.18</p>
-                </div>
+              <a href="#" class="quick-link-item">
+                <img src="https://placehold.co/60x60/e0e0e0/999999?text=Blog" alt="아이콘" />
+                <span>블로그</span>
               </a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 마이크로러닝 -->
-      <section class="microlearning-section">
-        <div class="section-container">
-          <h4 class="section-title">
-            핵심스킬만을 집중적으로! 한번에 소화할수 있는 학습! 마이크로러닝과
-            함께 하세요
-          </h4>
-
-          <div class="tags-container">
-            <span class="tag-btn">#전기자기학</span>
-            <span class="tag-btn">#의료인공지능개론</span>
-            <span class="tag-btn">#문해력</span>
-            <span class="tag-btn">#수업</span>
-            <span class="tag-btn">#의료인공지능</span>
-            <span class="tag-btn">#인공지능</span>
-            <span class="tag-btn">#AI</span>
-            <span class="tag-btn">#전기</span>
-            <span class="tag-btn">#자기학</span>
-            <span class="tag-btn">#맥스부트</span>
-            <span class="tag-btn">#운동선수</span>
-            <span class="tag-btn">#체육</span>
-          </div>
-
-          <div class="micro-grid">
-            <article class="micro-card">
-              <div class="micro-image">
-                <img
-                  src="https://placehold.co/256x160/cccccc/666666?text=Health"
-                  alt="마이크로 강좌"
-                />
-              </div>
-              <h5 class="micro-title">5분 생활 보건(마이크로강좌)</h5>
-              <div class="micro-stats">
-                <span class="views">조회수 2166</span>
-                <span class="episodes">17회</span>
-              </div>
-            </article>
-
-            <article class="micro-card">
-              <div class="micro-image">
-                <img
-                  src="https://placehold.co/256x160/cccccc/666666?text=Statistics"
-                  alt="마이크로 강좌"
-                />
-              </div>
-              <h5 class="micro-title">
-                경제통계학 1부 : 그림과 수치를 이용한 자료의 정리
-              </h5>
-              <div class="micro-stats">
-                <span class="views">조회수 4364</span>
-                <span class="episodes">62회</span>
-              </div>
-            </article>
-
-            <article class="micro-card">
-              <div class="micro-image">
-                <img
-                  src="https://placehold.co/256x160/cccccc/666666?text=ML"
-                  alt="마이크로 강좌"
-                />
-              </div>
-              <h5 class="micro-title">누구나 할 수 있는 AI 머신 러닝</h5>
-              <div class="micro-stats">
-                <span class="views">조회수 4488</span>
-                <span class="episodes">35회</span>
-              </div>
-            </article>
-
-            <article class="micro-card">
-              <div class="micro-image">
-                <img
-                  src="https://placehold.co/256x160/cccccc/666666?text=BigData"
-                  alt="마이크로 강좌"
-                />
-              </div>
-              <h5 class="micro-title">빅데이터와 인공지능의 응용</h5>
-              <div class="micro-stats">
-                <span class="views">조회수 1720</span>
-                <span class="episodes">12회</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- 숏폼 영상 -->
-      <section class="shorts-section">
-        <div class="section-container">
-          <div class="shorts-header">
-            <img
-              src="https://placehold.co/40x40/0036ce/ffffff?text=SHORTS"
-              alt="숏폼 아이콘"
-              class="shorts-icon"
-            />
-            <h3 class="section-title">K-MOOC 숏폼 영상</h3>
-          </div>
-
-          <div class="shorts-grid">
-            <article class="shorts-card">
-              <video
-                class="shorts-video"
-                poster="https://placehold.co/257x457/cccccc/666666?text=Shorts1"
-              ></video>
-              <h5 class="shorts-title">숏폼 3주차-수정분개의 유래</h5>
-              <p class="shorts-university">한성대학교</p>
-            </article>
-
-            <article class="shorts-card">
-              <video
-                class="shorts-video"
-                poster="https://placehold.co/257x457/cccccc/666666?text=Shorts2"
-              ></video>
-              <h5 class="shorts-title">[8주차] 탐색적 데이터 분석</h5>
-              <p class="shorts-university">경북대학교</p>
-            </article>
-
-            <article class="shorts-card">
-              <video
-                class="shorts-video"
-                poster="https://placehold.co/257x457/cccccc/666666?text=Shorts3"
-              ></video>
-              <h5 class="shorts-title">
-                [현대생활 속에 스민 수학, AI로 활용하기] 자동차를 얻을 수
-                있을까?
-              </h5>
-              <p class="shorts-university">한성대학교</p>
-            </article>
-
-            <article class="shorts-card">
-              <video
-                class="shorts-video"
-                poster="https://placehold.co/257x457/cccccc/666666?text=Shorts4"
-              ></video>
-              <h5 class="shorts-title">
-                AI 활용 숏폼 미디어 크리에이터로 수익내기_숏폼4
-              </h5>
-              <p class="shorts-university">경일대학교</p>
-            </article>
-          </div>
-
-          <button class="carousel-btn carousel-next">다음</button>
-        </div>
-      </section>
-
-      <!-- 공지사항 -->
-      <section class="announcement-section">
-        <div class="section-container">
-          <h3 class="section-title">공지사항</h3>
-
-          <ul class="announcement-list">
-            <li class="announcement-item">
-              <a href="#">
-                <span class="date">25.11.13</span>
-                <strong>2025년 K-MOOC 수강신청 이벤트 실시 안내</strong>
-              </a>
-            </li>
-            <li class="announcement-item">
-              <a href="#">
-                <span class="date">25.10.02</span>
-                <strong
-                  >[공고] 2025년 재직자 AID 집중과정 우수사례 공모전
-                  공고</strong
-                >
-              </a>
-            </li>
-            <li class="announcement-item">
-              <a href="#">
-                <span class="date">25.10.01</span>
-                <strong
-                  >[공고] 2025년 매치업(Match業) 우수사례 공모전 공고</strong
-                >
-              </a>
-            </li>
-            <li class="announcement-item">
-              <a href="#">
-                <span class="date">25.09.15</span>
-                <strong
-                  >2025년 한국형 온라인 공개강좌(K-MOOC) 우수사례 공모전
-                  공고</strong
-                >
-              </a>
-            </li>
-            <li class="announcement-item">
-              <a href="#">
-                <span class="date">25.08.27</span>
-                <strong
-                  >2024년 한국형 온라인 공개강좌(K-MOOC) 블루리본 강좌 선정
-                  ...</strong
-                >
-              </a>
-            </li>
-          </ul>
-
-          <div class="quick-links">
-            <a href="#" class="quick-link-item">
-              <img
-                src="https://placehold.co/60x60/e0e0e0/999999?text=FAQ"
-                alt="아이콘"
-              />
-              <span>자주묻는질문</span>
-            </a>
-            <a href="#" class="quick-link-item">
-              <img
-                src="https://placehold.co/60x60/e0e0e0/999999?text=News"
-                alt="아이콘"
-              />
-              <span>참여기관 소식</span>
-            </a>
-            <a href="#" class="quick-link-item">
-              <img
-                src="https://placehold.co/60x60/e0e0e0/999999?text=Inquiry"
-                alt="아이콘"
-              />
-              <span>강좌문의</span>
-            </a>
-            <a href="#" class="quick-link-item">
-              <img
-                src="https://placehold.co/60x60/e0e0e0/999999?text=Resources"
-                alt="아이콘"
-              />
-              <span>자료실</span>
-            </a>
-            <a href="#" class="quick-link-item">
-              <img
-                src="https://placehold.co/60x60/e0e0e0/999999?text=Guide"
-                alt="아이콘"
-              />
-              <span>이용가이드</span>
-            </a>
-            <a href="#" class="quick-link-item">
-              <img
-                src="https://placehold.co/60x60/e0e0e0/999999?text=Blog"
-                alt="아이콘"
-              />
-              <span>블로그</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- 맨 위로 버튼 -->
-      <button class="scroll-top" aria-label="맨 위로">↑</button>
+        <!-- 맨 위로 버튼 -->
+        <button class="scroll-top" aria-label="맨 위로">↑</button>
+      </div>
+      <!-- /panel-all -->
     </main>
 
     <!-- 푸터 -->
@@ -646,16 +515,8 @@
         </div>
 
         <div class="footer-logos">
-          <img
-            src="https://placehold.co/83x32/e0e0e0/999999?text=MOE"
-            alt="교육부"
-            class="footer-logo"
-          />
-          <img
-            src="https://placehold.co/168x20/e0e0e0/999999?text=NILE"
-            alt="국가평생교육진흥원"
-            class="footer-logo"
-          />
+          <img src="https://placehold.co/83x32/e0e0e0/999999?text=MOE" alt="교육부" class="footer-logo" />
+          <img src="https://placehold.co/168x20/e0e0e0/999999?text=NILE" alt="국가평생교육진흥원" class="footer-logo" />
         </div>
 
         <div class="footer-content">
@@ -667,49 +528,30 @@
           </div>
 
           <div class="footer-info">
-            <p>
-              (07800) 서울특별시 강서구 마곡중앙로 105-7(K스퀘어 마곡 타워1)
-            </p>
+            <p>(07800) 서울특별시 강서구 마곡중앙로 105-7(K스퀘어 마곡 타워1)</p>
             <p>
               (Tel) 1811-3118
-              <span class="notice-text"
-                >※ 평일 9:00~18:00 운영 (점심시간 12:00~13:00 제외)</span
-              >
+              <span class="notice-text">※ 평일 9:00~18:00 운영 (점심시간 12:00~13:00 제외)</span>
             </p>
             <p>E-mail : info_kmooc@nile.or.kr</p>
-            <p class="copyright">
-              COPYRIGHT © 2022 NATIONAL INSTITUTE FOR LIFELONG EDUCATION. ALL
-              RIGHTS RESERVED
-            </p>
+            <p class="copyright">COPYRIGHT © 2022 NATIONAL INSTITUTE FOR LIFELONG EDUCATION. ALL RIGHTS RESERVED</p>
           </div>
 
           <div class="footer-social">
             <a href="#" class="social-link">
-              <img
-                src="https://placehold.co/20x20/e0e0e0/999999?text=f"
-                alt="Facebook"
-              />
+              <img src="https://placehold.co/20x20/e0e0e0/999999?text=f" alt="Facebook" />
               <span>Facebook</span>
             </a>
             <a href="#" class="social-link">
-              <img
-                src="https://placehold.co/20x20/e0e0e0/999999?text=Y"
-                alt="Youtube"
-              />
+              <img src="https://placehold.co/20x20/e0e0e0/999999?text=Y" alt="Youtube" />
               <span>Youtube</span>
             </a>
             <a href="#" class="social-link">
-              <img
-                src="https://placehold.co/20x20/e0e0e0/999999?text=I"
-                alt="Instagram"
-              />
+              <img src="https://placehold.co/20x20/e0e0e0/999999?text=I" alt="Instagram" />
               <span>Instagram</span>
             </a>
             <a href="#" class="social-link">
-              <img
-                src="https://placehold.co/20x20/e0e0e0/999999?text=B"
-                alt="blog"
-              />
+              <img src="https://placehold.co/20x20/e0e0e0/999999?text=B" alt="blog" />
               <span>blog</span>
             </a>
           </div>
