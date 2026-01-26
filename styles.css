@@ -85,7 +85,9 @@ button {
 .nav {
   flex: 1;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
+  min-width: 0;
   gap: 10px;
 }
 
@@ -115,7 +117,9 @@ button {
 }
 
 .nav-search {
-  margin-left: auto;
+ margin-left: auto;
+white-space:nowrap;
+text-wrap-mode: nowrap;
   width: 24px;
   height: 24px;
 }
@@ -161,7 +165,7 @@ button {
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 10px;
 }
 
