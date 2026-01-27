@@ -53,14 +53,18 @@ button {
 
 /* 헤더 */
 .header {
-  background-color: #fff;
+  visibility: visible;
+  background: #fff;
+  box-sizing: border-box;
   border-bottom: 1px solid #e6e6e6;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  width: 100%;
   height: 84px;
-  display: flex;
+  padding: 20px 0;
+  display: block;
   align-items: center;
+  z-index: 10;
+  position: fixed;
+  top: 0;
 }
 
 .header-container {
@@ -71,15 +75,22 @@ button {
   padding: 0 410px;
   gap: 20px;
 }
-
-.logo {
-  font-size: 28px;
-  font-weight: 500;
-  min-width: 100px;
+.hidden {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
 }
 
 .logo a {
-  color: #000;
+  display: block;
+  width: 138px;
+  height: 26px;
+  font-weight: 500;
+  background: url(images/header_logo.png) no-repeat center;
+  background-size: contain;
 }
 
 .nav {
@@ -117,11 +128,23 @@ button {
 }
 
 .nav-search {
- margin-left: auto;
-white-space:nowrap;
-text-wrap-mode: nowrap;
-  width: 24px;
-  height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-search:hover {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
 }
 
 .header-actions {
@@ -222,23 +245,50 @@ text-wrap-mode: nowrap;
 
 /* 공지사항 섹션 */
 .notice-section {
-  background-color: #f9f9f9;
-  padding: 40px 410px;
-  border-bottom: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  color: #000;
+  display: flex;
+  justify-content: center;
 }
 
-.notice-container {
-  max-width: 1100px;
+.notice-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.notice-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .notice-title {
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 20px;
-  color: #000;
+  margin: 0;
+}
+
+.notice-container {
+  max-width: 1905px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0 410px;
+  gap: 20px;
 }
 
 .notice-item {
+  flex: 1;
+  max-width: 600px;
   border: 1px solid #e6e6e6;
   border-radius: 3px;
   padding: 20px;
@@ -258,12 +308,7 @@ text-wrap-mode: nowrap;
   color: #000;
 }
 
-.notice-date {
-  color: #888;
-  font-size: 14px;
-  min-width: 100px;
-  text-align: right;
-}
+
 
 /* 추천 강좌 섹션 */
 .course-section {
@@ -384,12 +429,7 @@ text-wrap-mode: nowrap;
   margin-top: 8px;
 }
 
-.course-period {
-  font-size: 14px;
-  font-weight: 500;
-  color: #808080;
-  margin-top: 8px;
-}
+
 
 .course-tags {
   display: flex;
@@ -542,10 +582,7 @@ text-wrap-mode: nowrap;
   margin-bottom: 6px;
 }
 
-.popular-date {
-  font-size: 13px;
-  color: #888;
-}
+
 
 /* 마이크로러닝 섹션 */
 .microlearning-section {
@@ -746,11 +783,7 @@ text-wrap-mode: nowrap;
   gap: 20px;
 }
 
-.announcement-item .date {
-  font-size: 14px;
-  color: #888;
-  min-width: 70px;
-}
+
 
 .announcement-item strong {
   flex: 1;

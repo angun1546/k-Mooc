@@ -171,22 +171,7 @@ if ("IntersectionObserver" in window) {
   });
 }
 
-// 폼 유효성 검사 (필요시)
-function validateForm(form) {
-  const inputs = form.querySelectorAll("input[required]");
-  let isValid = true;
 
-  inputs.forEach((input) => {
-    if (!input.value.trim()) {
-      input.style.borderColor = "red";
-      isValid = false;
-    } else {
-      input.style.borderColor = "";
-    }
-  });
-
-  return isValid;
-}
 
 // 액세시빌리티: 키보드 네비게이션
 document.addEventListener("keydown", (e) => {
