@@ -308,7 +308,42 @@ button {
   color: #000;
 }
 
+/* <!-- 검색 박스 { --> */
+.box_search {
+  padding: 40px 0;
+  background: #fff;
+}
 
+.search {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 40px 40px 40px 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: url(images/search_bg01.png) no-repeat 14% center #0036ce;
+  -webkit-flex-wrap: space-between;
+}
+
+.search h3 {
+  flex-grow: 1;
+  color: #fff;
+  display: block;
+  height: 30px;
+  width: 390px;
+  text-size-adjust: 100%;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.label {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 0;
+}
 
 /* 추천 강좌 섹션 */
 .course-section {
@@ -428,8 +463,6 @@ button {
   color: #808080;
   margin-top: 8px;
 }
-
-
 
 .course-tags {
   display: flex;
@@ -581,8 +614,6 @@ button {
   color: #000;
   margin-bottom: 6px;
 }
-
-
 
 /* 마이크로러닝 섹션 */
 .microlearning-section {
@@ -782,8 +813,6 @@ button {
   align-items: center;
   gap: 20px;
 }
-
-
 
 .announcement-item strong {
   flex: 1;
