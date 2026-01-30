@@ -354,6 +354,8 @@ button {
 
 .section-container {
   max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .section-title {
@@ -615,11 +617,24 @@ button {
   margin-bottom: 6px;
 }
 
+.banner {
+  box-sizing: border-box;
+  display: block;
+  height: 120px;
+  margin-bottom: 50px;
+  width: 1905px;
+  padding: 30px 50px;
+  background: url(../images/index_banner01.png) no-repeat center;
+  background-size: cover;
+}
+
+
+
 /* 마이크로러닝 섹션 */
 .microlearning-section {
-  background-color: #fff;
-  padding: 60px 410px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 60px 0 65px;
+    background: #e4f7ea;
+    box-sizing: border-box;
 }
 
 .tags-container {
