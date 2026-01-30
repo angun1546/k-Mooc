@@ -628,13 +628,11 @@ button {
   background-size: cover;
 }
 
-
-
 /* 마이크로러닝 섹션 */
 .microlearning-section {
   padding: 60px 0 65px;
-    background: #e4f7ea;
-    box-sizing: border-box;
+  background: #e4f7ea;
+  box-sizing: border-box;
 }
 
 .tags-container {
@@ -735,6 +733,14 @@ button {
   background-color: #ddd;
   margin-left: 10px;
 }
+
+/* 상시강좌 */
+.special {
+    padding: 60px 0;
+    background: url(../images/special_bg.png) no-repeat center;
+    background-size: cover;
+}
+
 
 /* 숏폼 영상 섹션 */
 .shorts-section {
