@@ -183,24 +183,3 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// 카테고리 Swiper 초기화
-document.addEventListener("DOMContentLoaded", () => {
-  const categorySwiper = new Swiper(".categorySwiper", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".category_next",
-      prevEl: ".category_prev",
-    },
-    breakpoints: {
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-    },
-  });
-});
