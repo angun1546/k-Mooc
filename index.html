@@ -18,7 +18,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>K-MOOC - 한국형 온라인 공개강좌</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1248,25 +1249,35 @@
               <h4 class="category_title">
                 특별한 강좌<br />카테고리별 바로가기
               </h4>
-              <ul>
-                <li>
-                  <a href="javascript:goSpecialCatePage('etc_categoryid', 65);"
-                    ><p>수어강좌</p></a
-                  >
-                </li>
+              <div class="category-wrapper">
+                <button type="button" class="category_prev" title="이전">
+                  <i class="xi xi-angle-left"></i>
+                </button>
+                <div class="swiper categorySwiper">
+                  <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                      <a href="javascript:goSpecialCatePage('etc_categoryid', 65);"
+                        ><p>수어강좌</p></a
+                      >
+                    </li>
 
-                <li>
-                  <a href="javascript:goSpecialCatePage('self_categoryid', 76);"
-                    ><p>첨단분야 혁신융합대학사업</p></a
-                  >
-                </li>
+                    <li class="swiper-slide">
+                      <a href="javascript:goSpecialCatePage('self_categoryid', 76);"
+                        ><p>첨단분야 혁신융합대학사업</p></a
+                      >
+                    </li>
 
-                <li>
-                  <a href="javascript:goSpecialCatePage('self_categoryid', 77);"
-                    ><p>K학술확산연구</p></a
-                  >
-                </li>
-              </ul>
+                    <li class="swiper-slide">
+                      <a href="javascript:goSpecialCatePage('self_categoryid', 77);"
+                        ><p>K학술확산연구</p></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <button type="button" class="category_next" title="다음">
+                  <i class="xi xi-angle-right"></i>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -1516,6 +1527,8 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/popup-script.js"></script>
   </body>
 </html>
