@@ -1,673 +1,364 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1V295G7ZP"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K-MOOC - 한국형 온라인 공개강좌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="images/header_logo.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+</head>
+<body>
 
-      gtag("config", "G-S1V295G7ZP");
-    </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>K-MOOC</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/images/_ K-MOOC - Chrome 2026-02-03 오후 3_10_24.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#ffffff" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  </head>
-  <body>
-    <!-- 팝업 오버레이 -->
-    <div id="popupOverlay" class="popup-overlay">
-      <!-- 팝업 모달 -->
-      <div class="popup-modal" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-        <!-- 팝업 헤더 -->
-        <div class="popup-header">
-          <!-- 아이콘 영역 -->
-          <div class="featured-icon" aria-hidden="true">
-            <!-- 유효한 SVG 아이콘으로 교체 -->
-            <svg class="icon-save" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-              <path d="M6 3h10l4 4v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" stroke="#0066cc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M8 12h8M8 16h8" stroke="#0066cc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
+  <div class="skip-nav">
+    <a href="#main">본문 바로가기</a>
+  </div>
 
-          <!-- 텍스트 영역 -->
-          <div class="popup-text">
-            <h2 id="popupTitle" class="popup-title">warning!</h2>
-            <p class="popup-description">이 프로젝트는 구직용 포트폴리오 입니다. k-mooc와 무관함을 알려드립니다.</p>
-          </div>
+  <div id="popupOverlay" class="popup-overlay" role="dialog" aria-modal="true">
+    <div class="popup-modal">
+      <div class="popup-body">
+        <h2 class="popup-title">알림</h2>
+        <p>이 프로젝트는 구직용 포트폴리오입니다.<br>K-MOOC 공식 사이트와는 무관합니다.</p>
+      </div>
+      <div class="popup-btns">
+        <button id="btnCancel" class="btn-sub">닫기</button>
+        <button id="btnHideToday" class="btn-main">오늘 하루 보이지 않기</button>
+      </div>
+      <button id="btnClose" class="popup-close" aria-label="닫기">&times;</button>
+    </div>
+  </div>
 
-          <!-- 닫기 버튼 -->
-          <button class="btn-close" id="btnClose" aria-label="닫기">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18" aria-hidden="true">
-              <path d="M18 6L6 18M6 6L18 18" stroke="#717680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- 팝업 액션 버튼 -->
-        <div class="popup-actions">
-          <button class="btn btn-cancel" id="btnCancel">Cancel</button>
-          <button class="btn btn-primary" id="btnHideToday">오늘 하루 보이지 않기</button>
-        </div>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">
+        <a href="index.html"><span class="hidden">K-MOOC</span></a>
+      </h1>
+      <nav class="nav">
+        <ul class="gnb">
+          <li><a href="#">강좌</a></li>
+          <li><a href="#">매치업</a></li>
+          <li><a href="#">상시강좌</a></li>
+          <li><a href="#">학점은행</a></li>
+          <li><a href="#">커뮤니티</a></li>
+        </ul>
+      </nav>
+      <div class="util">
+        <a href="#" class="login-btn">로그인</a>
+        <a href="#" class="join-btn">회원가입</a>
+        <button class="m-menu-btn" aria-label="메뉴">&#9776;</button>
       </div>
     </div>
+  </header>
 
-    <script src="popup-script.js"></script>
+  <main id="main" class="main-content">
+    
+    <section class="visual-banner">
+      <div class="banner-box">
+        <img src="images/banner_2560.svg" alt="메인 배너" />
+      </div>
+    </section>
 
-    <!-- 본문 바로가기 -->
-    <div class="skip-nav">
-      <a href="#panel-all">본문 바로가기</a>
+    <section class="notice-bar">
+      <div class="container flex-start">
+        <div class="label-box">
+          <img src="images/ico_rolling_banner.png" alt="" />
+          <span>공지사항</span>
+        </div>
+        <div class="notice-slider">
+          <a href="#">[공고] 2025년 매치업(Match業) 우수사례 공모전 안내</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <div class="container">
+        <div class="search-box">
+          <h2>강좌 검색</h2>
+          <div class="form-wrapper">
+            <div class="input-group">
+              <input type="text" placeholder="배우고 싶은 강좌를 찾아보세요." />
+              <button type="button" class="search-submit">검색</button>
+            </div>
+            <div class="keywords">
+              <a href="#">#인공지능</a>
+              <a href="#">#디자인</a>
+              <a href="#">#프로그래밍</a>
+              <a href="#">#통계학</a>
+              <a href="#">#인문학</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section recommended">
+      <div class="container">
+        <h2 class="title"><span>K-MOOC</span> 추천 강좌</h2>
+        <div class="card-grid">
+          <article class="course-card">
+            <div class="thumb">
+              <img src="images/추천강좌1_1725258215.png" alt="" />
+              <span class="badge active">진행중</span>
+            </div>
+            <div class="info">
+              <h3>인공지능 시대의 언어학 입문</h3>
+              <p>송상헌 | 고려대학교</p>
+            </div>
+          </article>
+          <article class="course-card">
+            <div class="thumb">
+              <img src="images/추천강좌2_1703555520.png" alt="" />
+              <span class="badge active">진행중</span>
+            </div>
+            <div class="info">
+              <h3>일본 음식문화의 이해</h3>
+              <p>정의상 | 조선대학교</p>
+            </div>
+          </article>
+          <article class="course-card">
+            <div class="thumb">
+              <img src="images/추천강좌3_1762165355.jpg" alt="" />
+              <span class="badge active">진행중</span>
+            </div>
+            <div class="info">
+              <h3>환경의 역습! 원인과 우리의 대처</h3>
+              <p>배성준 | 건국대학교</p>
+            </div>
+          </article>
+          <article class="course-card">
+            <div class="thumb">
+              <img src="images/추천강좌4_1756426293.png" alt="" />
+              <span class="badge active">진행중</span>
+            </div>
+            <div class="info">
+              <h3>자율주행제어 이론 및 실습</h3>
+              <p>한경석 | 경북대학교</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section popular bg-light">
+      <div class="container">
+        <h2 class="title">서두르세요! <span>인기 강좌</span>가 곧 시작합니다.</h2>
+        <div class="card-grid-row">
+          <article class="course-item">
+            <div class="img"><img src="images/cosurelistviews_thumbnail_1718403339.jpg" alt="" /></div>
+            <div class="txt">
+              <h3>미생물학 입문</h3>
+              <p>2025.12.22 ~ 2026.01.30</p>
+            </div>
+          </article>
+          <article class="course-item">
+            <div class="img"><img src="images/cosurelistviews_thumbnail_1754964043.png" alt="" /></div>
+            <div class="txt">
+              <h3>AI와 챗GPT의 이해</h3>
+              <p>2025.10.20 ~ 2026.01.31</p>
+            </div>
+          </article>
+          <article class="course-item">
+            <div class="img"><img src="images/cosurelistviews_thumbnail_1756695008.png" alt="" /></div>
+            <div class="txt">
+              <h3>항공안전 및 보안</h3>
+              <p>2025.10.20 ~ 2026.01.31</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section categories bg-light">
+      <div class="container">
+        <div class="drag-container" id="categoryDrag">
+          <div class="drag-track">
+            <div class="cat-card humanities active">
+              <div class="icon"><img src="images/thema_liberal.png" alt="인문" /></div>
+              <span>인문</span>
+            </div>
+            <div class="cat-card social">
+              <div class="icon"><img src="images/thema_social.png" alt="사회" /></div>
+              <span>사회</span>
+            </div>
+            <div class="cat-card education">
+              <div class="icon"><img src="images/thema_ico_education.png" alt="교육" /></div>
+              <span>교육</span>
+            </div>
+            <div class="cat-card engineering">
+              <div class="icon"><img src="images/thema_ico_engineering.png" alt="공학" /></div>
+              <span>공학</span>
+            </div>
+            <div class="cat-card natural">
+              <div class="icon"><img src="images/thema_ico_physical.png" alt="자연" /></div>
+              <span>자연</span>
+            </div>
+            <div class="cat-card medical">
+              <div class="icon"><img src="images/thema_ico_medical.png" alt="의약" /></div>
+              <span>의약</span>
+            </div>
+            <div class="cat-card arts">
+              <div class="icon"><img src="images/thema_ico_entertainment.png" alt="예체능" /></div>
+              <span>예체능</span>
+            </div>
+            <div class="cat-card convergence">
+              <div class="icon"><img src="images/thema_ico_convergence.png" alt="융복합" /></div>
+              <span>융복합</span>
+            </div>
+            <div class="cat-card etc">
+              <div class="icon"><img src="images/thema_ico_etc.png" alt="기타" /></div>
+              <span>기타</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section micro">
+      <div class="container">
+        <h2 class="title">마이크로러닝 핵심 스킬</h2>
+        <div class="tags">
+          <button>#전기자기학</button>
+          <button>#의료인공지능</button>
+          <button>#문해력</button>
+          <button>#머신러닝</button>
+          <button>#빅데이터</button>
+        </div>
+        <div class="slider-wrapper" id="microSlider">
+          <div class="slider-container">
+            <div class="slider-track">
+              <article class="course-card">
+                <div class="thumb"><img src="images/5분만에" alt="" /></div>
+                <div class="info">
+                  <h3>5분 생활 보건</h3>
+                  <p>조회수 2,166 | 17회차</p>
+                </div>
+              </article>
+              <article class="course-card">
+                <div class="thumb"><img src="images/인공지능" alt="" /></div>
+                <div class="info">
+                  <h3>누구나 할 수 있는 AI 머신 러닝</h3>
+                  <p>조회수 4,488 | 35회차</p>
+                </div>
+              </article>
+              <article class="course-card">
+                <div class="thumb"><img src="images/왜 통계학" alt="" /></div>
+                <div class="info">
+                  <h3>경제통계학 1부</h3>
+                  <p>조회수 4,364 | 62회차</p>
+                </div>
+              </article>
+              <article class="course-card">
+                <div class="thumb"><img src="images/모바일 컴퓨터" alt="" /></div>
+                <div class="info">
+                  <h3>빅데이터와 인공지능 응용</h3>
+                  <p>조회수 1,720 | 12회차</p>
+                </div>
+              </article>
+              <article class="course-card">
+                <div class="thumb"><img src="images/cosurelistviews_thumbnail_1690969811.jpg" alt="" /></div>
+                <div class="info">
+                  <h3>응용유체역학</h3>
+                  <p>조회수 1,200 | 10회차</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <button class="slider-btn prev">&lt;</button>
+          <button class="slider-btn next">&gt;</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shorts bg-blue">
+      <div class="container">
+        <h2 class="title">K-MOOC 숏폼 영상</h2>
+        <div class="slider-wrapper" id="shortsSlider">
+          <div class="slider-container">
+            <div class="slider-track">
+              <article class="shorts-card">
+                <video poster="images/tn_1.png"></video>
+                <div class="info">
+                  <h3>협동로봇 완전정복</h3>
+                  <p>서울디지털대학교</p>
+                </div>
+              </article>
+              <article class="shorts-card">
+                <video poster="images/tn_1 (1).png"></video>
+                <div class="info">
+                  <h3>공연 제작의 기본 단계</h3>
+                  <p>인천대학교</p>
+                </div>
+              </article>
+              <article class="shorts-card">
+                <video poster="images/tn_1 (5).png"></video>
+                <div class="info">
+                  <h3>스포츠 물리 치료의 이해</h3>
+                  <p>가톨릭관동대학교</p>
+                </div>
+              </article>
+              <article class="shorts-card">
+                <video poster="images/tn_1 (4).png"></video>
+                <div class="info">
+                  <h3>Praat: 스크립팅 기초</h3>
+                  <p>영남대학교</p>
+                </div>
+              </article>
+              <article class="shorts-card">
+                <video poster="images/tn_1 (2).png"></video>
+                <div class="info">
+                  <h3>데이터 분석 기초</h3>
+                  <p>부산대학교</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <button class="slider-btn prev">&lt;</button>
+          <button class="slider-btn next">&gt;</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="f-top">
+        <div class="f-logo">K-MOOC</div>
+        <div class="f-links">
+          <a href="#" class="privacy">개인정보처리방침</a>
+          <a href="#">이용약관</a>
+          <a href="#">저작권보호 정책</a>
+          <a href="#">이수증검증</a>
+          <a href="#">원격도우미</a>
+        </div>
+        <div class="f-sns">
+          <a href="#" class="sns-link fb" title="Facebook">FB</a>
+          <a href="#" class="sns-link yt" title="Youtube">YT</a>
+          <a href="#" class="sns-link ig" title="Instagram">IG</a>
+        </div>
+      </div>
+      <div class="f-mid">
+        <div class="f-info">
+          <p>(07800) 서울특별시 강서구 마곡중앙로 105-7(K스퀘어 마곡 타워1)</p>
+          <p>고객센터: <strong>1811-3118</strong> (평일 09:00~18:00)</p>
+          <p>E-mail: info_kmooc@nile.or.kr</p>
+        </div>
+        <div class="f-partners">
+          <img src="https://placehold.co/80x30/333/fff?text=MOE" alt="교육부" />
+          <img src="https://placehold.co/120x30/333/fff?text=NILE" alt="국가평생교육진흥원" />
+        </div>
+      </div>
+      <div class="f-bottom">
+        <p class="copy">COPYRIGHT © 2022 NATIONAL INSTITUTE FOR LIFELONG EDUCATION. ALL RIGHTS RESERVED</p>
+      </div>
     </div>
+  </footer>
 
-    <!-- 헤더 -->
-    <header class="header">
-      <div class="header-container">
-        <h1 class="logo">
-          <a href="/" class="tabindex" title="K-MOOC"><span class="hidden">K-MOOC</span></a>
-        </h1>
+  <button class="to-top-btn" id="toTop">↑</button>
 
-        <nav class="nav" aria-label="주요 메뉴">
-          <button class="nav-toggle">강좌</button>
-          <ul class="nav-list">
-            <li class="nav-item"><a href="#">매치업</a></li>
-            <li class="nav-item"><a href="#">상시강좌</a></li>
-            <li class="nav-item"><a href="#">학점은행</a></li>
-            <li class="nav-item"><a href="#">커뮤니티</a></li>
-          </ul>
-          <button class="nav-search" aria-label="검색">
-            <img src="images/돋보기.png" alt="검색" class="search-icon" />
-          </button>
-        </nav>
-
-        <div class="header-actions">
-          <a href="#" class="login-link">로그인</a>
-          <a href="#" class="signup-link">회원가입</a>
-          <div class="language-selector">
-            <button class="language-btn">한국어</button>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- 메인 콘텐츠 -->
-    <main id="main" class="main" role="main">
-      <!-- 탭 패널: 탭이 제어하는 실제 콘텐츠 -->
-      <div id="panel-all" role="tabpanel" aria-labelledby="tab-all">
-        <!-- 배너 섹션 -->
-        <section class="banner-section" aria-label="배너">
-          <div class="banner-item">
-            <img src="images/banner_2560.svg" alt="배너 이미지" class="banner-image" />
-          </div>
-          <div class="banner-item">
-            <img src="images/banner_2561.svg" alt="배너 이미지" class="banner-image" />
-          </div>
-          <div class="banner-item">
-            <img src="images/banner_2562.svg" alt="배너 이미지" class="banner-image" />
-          </div>
-        </section>
-
-        <!-- 탭 버튼(시각적 탭)을 위한 보조 UI(필요하면 확장) -->
-        <div class="tablist" role="tablist" aria-hidden="true" style="display: none"></div>
-
-        <!-- 최신 공고 -->
-        <section class="notice-section" aria-labelledby="noticeTitle">
-          <div class="notice-container">
-            <div class="notice-title-wrapper">
-              <img src="images/ico_rolling_banner.png" alt="공지" class="notice-icon" />
-              <h2 id="noticeTitle" class="notice-title">공지</h2>
-            </div>
-            <div class="notice-item">
-              <a href="#" class="notice-link">
-                <strong>[공고] 2025년 매치업(Match業) 우수사례 공모전 공고</strong>
-              </a>
-            </div>
-          </div>
-        </section>
-        <!-- 검색 박스 { -->
-        <div class="box_search" data-role="search">
-          <div class="container">
-            <div class="search">
-              <h3 class="title" data-trans="search">검색</h3>
-              <div>
-                <div class="search_form">
-                  <input type="search" id="index_search" name="search_text" title="검색어 입력" placeholder="배우고 싶은 강좌를 찾아보세요." data-trans="findCourse" />
-                  <label hidden="" for="index_search">검색어 입력</label>
-                  <button type="button" name="search_button" title="검색" class="btn_search">
-                    <i class="xi xi-search"></i>
-                  </button>
-                </div>
-                <ul class="tag_list">
-                  <li>
-                    <i class="xi xi-angle-right-thin"></i>
-                    <a href="/view/search/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5">인공지능</a>
-                  </li>
-
-                  <li>
-                    <i class="xi xi-angle-right-thin"></i>
-                    <a href="/view/search/%EB%94%94%EC%9E%90%EC%9D%B8">디자인</a>
-                  </li>
-
-                  <li>
-                    <i class="xi xi-angle-right-thin"></i>
-                    <a href="/view/search/%EC%98%81%EC%96%B4">영어</a>
-                  </li>
-
-                  <li>
-                    <i class="xi xi-angle-right-thin"></i>
-                    <a href="/view/search/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">프로그래밍</a>
-                  </li>
-
-                  <li>
-                    <i class="xi xi-angle-right-thin"></i>
-                    <a href="/view/search/%ED%86%B5%EA%B3%84">통계</a>
-                  </li>
-
-                  <li>
-                    <i class="xi xi-angle-right-thin"></i>
-                    <a href="/view/search/%EC%9C%84%EB%8C%80%ED%95%9C%EC%88%98%EC%97%85">위대한수업</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 추천 강좌 -->
-        <section class="course-section" aria-labelledby="recommendTitle">
-          <div class="section-container">
-            <h2 id="recommendTitle" class="section-title"><strong class="highlight">K-MOOC</strong>에서 추천하는 강좌 리스트</h2>
-
-            <div class="course-grid">
-              <article class="course-card">
-                <div class="course-image">
-                  <img src="images/추천강좌1_1725258215.png" alt="강좌 이미지" />
-                  <span class="badge badge-active">진행중</span>
-                  <span class="badge badge-certificate">이수증</span>
-                </div>
-                <h3 class="course-title">인공지능 시대의 언어학 입문</h3>
-                <p class="course-professor">송상헌</p>
-                <p class="course-university">고려대학교</p>
-              </article>
-
-              <article class="course-card">
-                <div class="course-image">
-                  <img src="images/추천강좌2_1703555520.png" alt="강좌 이미지" />
-                  <span class="badge badge-active">진행중</span>
-                  <span class="badge badge-certificate">이수증</span>
-                </div>
-                <h3 class="course-title">일본 음식문화의 이해</h3>
-                <p class="course-professor">정의상</p>
-                <p class="course-university">조선대학교</p>
-
-                <div class="course-tags">
-                  <span class="tag">조선대학교</span>
-                  <span class="tag">일본</span>
-                  <span class="tag">일본문화</span>
-                </div>
-              </article>
-
-              <article class="course-card">
-                <div class="course-image">
-                  <img src="images/추천강좌3_1762165355.jpg" alt="강좌 이미지" />
-                  <span class="badge badge-active">진행중</span>
-                  <span class="badge badge-certificate">이수증</span>
-                </div>
-                <h3 class="course-title">환경의 역습! 원인과 우리의 대처</h3>
-                <p class="course-professor">배성준</p>
-                <p class="course-university">건국대학교</p>
-              </article>
-
-              <article class="course-card">
-                <div class="course-image">
-                  <img src="images/추천강좌4_1756426293.png" alt="강좌 이미지" />
-                  <span class="badge badge-active">진행중</span>
-                  <span class="badge badge-certificate">이수증</span>
-                </div>
-                <h3 class="course-title">자율주행제어 이론 및 실습</h3>
-                <p class="course-professor">한경석</p>
-                <p class="course-university">경북대학교</p>
-
-                <div class="course-tags">
-                  <span class="tag">자율주행</span>
-                  <span class="tag">차량제어</span>
-                  <span class="tag">자동차</span>
-                  <span class="tag">교통</span>
-                </div>
-              </article>
-            </div>
-
-            <div class="carousel-controls">
-              <button class="carousel-btn carousel-prev">이전</button>
-              <button class="carousel-btn carousel-next">다음</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- 기관 로고 -->
-        <section class="partners-section" aria-label="참여기관">
-          <div class="partners-grid">
-            <div class="partner-item1">
-              <span class="title">인문</span>
-              <img src="images/thema_liberal.png" alt="기관 로고" />
-            </div>
-            <div class="partner-item2">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-            <div class="partner-item3">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-            <div class="partner-item4">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-            <div class="partner-item5">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-            <div class="partner-item6">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-            <div class="partner-item7">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-            <div class="partner-item8">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-            <div class="partner-item9">
-              <img src="https://placehold.co/108x124/e0e0e0/999999?text=Partner" alt="기관 로고" />
-            </div>
-          </div>
-        </section>
-
-        <!-- 인기 강좌 -->
-        <section class="popular-section" aria-labelledby="popularTitle">
-          <div class="section-container">
-            <h2 id="popularTitle" class="section-title">서두르세요! 인기 강좌가 곧 시작합니다.</h2>
-
-            <div class="popular-grid">
-              <div class="popular-column">
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1718403339.jpg" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">미생물학 입문</h3>
-                    <div class="date">
-                      <span>2025.12.22 ~ 2026.01.30</span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1754964043.png" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">AI와 챗GPT의 이해</h3>
-                    <div class="date">
-                      <span>2025.10.20 ~ 2026.01.31</span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1756695008.png" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">항공안전 및 보안</h3>
-                    <div class="date">
-                      <span>2025.10.20 ~ 2026.01.31</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="popular-column">
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1756703626.png" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">해양의 역사로 본 근대화</h3>
-                    <div class="date">
-                      <span>2025.10.20 ~ 2026.01.31</span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1756704704.png" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">항공안전 핵심 가이드: 이론에서 실천까지</h3>
-                    <div class="date">
-                      <span>2025.10.20 ~ 2026.01.31</span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1765775037.png" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">해운기업문화론</h3>
-                    <div class="date">
-                      <span>2026.01.02 ~ 2026.02.28</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="popular-column">
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1690969811.jpg" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">응용유체역학</h3>
-                    <div class="date">
-                      <span>2025.12.19 ~ 2026.02.27</span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1752551272.png" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">유사문법으로 배우는 한국어 의사소통 완성</h3>
-                    <div class="date">
-                      <span>2025.11.03 ~ 2026.01.31</span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="popular-item">
-                  <img src="images/cosurelistviews_thumbnail_1752552273.png" alt="강좌 썸네일" class="popular-thumb" />
-                  <div class="popular-content">
-                    <h3 class="popular-title">고전문학을 읽는 방법과 시각</h3>
-                    <div class="date">
-                      <span>2025.11.03 ~ 2026.01.31</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div class="banner">
-          <div class="container">
-            <strong class="title">수강목적별 인공지능 이수체계도</strong>
-            <p>인공지능 분야의 전체 이수체계도를 기반으로 개인의 맞춤형 로드맵을 제시합니다.</p>
-          </div>
-        </div>
-
-        <!-- 마이크로러닝 -->
-        <section class="microlearning-section" aria-labelledby="microTitle">
-          <div class="section-container">
-            <h2 id="microTitle" class="section-title">핵심스킬만을 집중적으로! 한번에 소화할수 있는 학습! 마이크로러닝과 함께 하세요</h2>
-
-            <div class="tags-container">
-              <span class="tag-btn">#전기자기학</span>
-              <span class="tag-btn">#의료인공지능개론</span>
-              <span class="tag-btn">#문해력</span>
-              <span class="tag-btn">#수업</span>
-              <span class="tag-btn">#의료인공지능</span>
-              <span class="tag-btn">#인공지능</span>
-              <span class="tag-btn">#AI</span>
-              <span class="tag-btn">#전기</span>
-              <span class="tag-btn">#자기학</span>
-              <span class="tag-btn">#맥스부트</span>
-              <span class="tag-btn">#운동선수</span>
-              <span class="tag-btn">#체육</span>
-            </div>
-
-            <div class="micro-grid">
-              <article class="micro-card">
-                <div class="micro-image">
-                  <img src="images/5분만에" alt="마이크로 강좌" />
-                </div>
-                <h3 class="micro-title">5분 생활 보건(마이크로강좌)</h3>
-                <div class="micro-stats">
-                  <span class="views">조회수 2166</span>
-                  <span class="episodes">17회</span>
-                </div>
-              </article>
-
-              <article class="micro-card">
-                <div class="micro-image">
-                  <img src="images/왜 통계학" alt="마이크로 강좌" />
-                </div>
-                <h3 class="micro-title">경제통계학 1부 : 그림과 수치를 이용한 자료의 정리</h3>
-                <div class="micro-stats">
-                  <span class="views">조회수 4364</span>
-                  <span class="episodes">62회</span>
-                </div>
-              </article>
-
-              <article class="micro-card">
-                <div class="micro-image">
-                  <img src="images/인공지능" alt="마이크로 강좌" />
-                </div>
-                <h3 class="micro-title">누구나 할 수 있는 AI 머신 러닝</h3>
-                <div class="micro-stats">
-                  <span class="views">조회수 4488</span>
-                  <span class="episodes">35회</span>
-                </div>
-              </article>
-
-              <article class="micro-card">
-                <div class="micro-image">
-                  <img src="images/모바일 컴퓨터" alt="마이크로 강좌" />
-                </div>
-                <h3 class="micro-title">빅데이터와 인공지능의 응용</h3>
-                <div class="micro-stats">
-                  <span class="views">조회수 1720</span>
-                  <span class="episodes">12회</span>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- 상시강좌/스페셜 카테고리 바로가기 { -->
-
-        <!-- 숏폼 영상 -->
-        <section class="shorts-section" aria-labelledby="shortsTitle">
-          <div class="section-container">
-            <div class="shorts-header">
-              <img src="/images/ico_shorts_logo.svg" alt="숏폼 아이콘" class="shorts-icon" />
-              <h2 id="shortsTitle" class="section-title">K-MOOC 숏폼 영상</h2>
-            </div>
-
-            <div class="shorts-grid">
-              <article class="shorts-card">
-                <video class="shorts-video" poster="/images/tn_1.png"></video>
-                <h3 class="shorts-title">“사람과 함께 일하는 로봇? 협동로봇 완전정복”</h3>
-                <p class="shorts-university">서울디지털대학교</p>
-              </article>
-
-              <article class="shorts-card">
-                <video class="shorts-video" poster="/images/tn_1 (1).png"></video>
-                <h3 class="shorts-title">[8주차] 1주차 강좌소개/ 공연 제작의 기본 단계</h3>
-                <p class="shorts-university">인천대학교</p>
-              </article>
-
-              <article class="shorts-card">
-                <video class="shorts-video" poster="/images/tn_1 (5).png"></video>
-                <h3 class="shorts-title">[숏폼] 05주차 v3</h3>
-                <p class="shorts-university">가톨릭관동대학교</p>
-              </article>
-
-              <article class="shorts-card">
-                <video class="shorts-video" poster="images/tn_1 (4).png"></video>
-                <h3 class="shorts-title">Praat:기초부터스크립팅까지09</h3>
-                <p class="shorts-university">영남대학교</p>
-              </article>
-            </div>
-
-            <button class="short-form_next slick-arrow slick-disabled" style="" aria-disabled="true"></button>
-          </div>
-        </section>
-
-        <!-- 공지사항 -->
-        <section class="notice">
-          <div class="container-fluid">
-            <!-- 공지사항 Top5 -->
-            <div class="board">
-              <h3 class="title">공지사항</h3>
-              <div class="box_board">
-                <ul class="list">
-                  <li class="item">
-                    <span class="date">25.12.22</span>
-                    <a href="#" class="notice-link">
-                      <strong>2025년 한국형 온라인 공개강좌(K-MOOC) 우수사례 공모전 수상자 발표</strong>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <span class="date">26.01.26</span>
-                    <a href="#" class="notice-link">
-                      <strong>2025년 K-MOOC 우수사례 공모전 수상작 수기집</strong>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <span class="date">26.01.14</span>
-                    <a href="#" class="notice-link">
-                      <strong>2026년 한국형 온라인 공개강좌(K-MOOC) 수요분석 및 활용현황 조사 연장(~2.4)</strong>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <span class="date">26.01.12</span>
-                    <a href="#" class="notice-link">
-                      <strong>[서울디지털대학교] QGIS로 끝내는 공간정보 실무 K-MOOC 실습 공모전 실시</strong>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <span class="date">26.01.05</span>
-                    <a href="#" class="notice-link">
-                      <strong>2024 K-MOOC 우수사례 공모전 수상자 인터뷰(다국어 자막)</strong>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 각종 링크 -->
-            <ul class="quick-links">
-              <li class="link">
-                <a href="#">
-                  <span class="img"><img src="/images/link_ico_faq.png" alt="자주묻는질문" /></span>
-                  <span>자주묻는질문</span>
-                </a>
-              </li>
-              <li class="link">
-                <a href="#">
-                  <img src="https://via.placeholder.com/40" alt="참여기관 소식" />
-                  <span>참여기관 소식</span>
-                </a>
-              </li>
-              <li class="link">
-                <a href="#">
-                  <img src="https://via.placeholder.com/40" alt="강좌문의" />
-                  <span>강좌문의</span>
-                </a>
-              </li>
-              <li class="link">
-                <a href="#">
-                  <img src="https://via.placeholder.com/40" alt="자료실" />
-                  <span>자료실</span>
-                </a>
-              </li>
-              <li class="link">
-                <a href="#">
-                  <img src="https://via.placeholder.com/40" alt="이용가이드" />
-                  <span>이용가이드</span>
-                </a>
-              </li>
-              <li class="link">
-                <a href="#">
-                  <img src="https://via.placeholder.com/40" alt="블로그" />
-                  <span>블로그</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- 맨 위로 버튼 -->
-        <button class="scroll-top" aria-label="맨 위로">↑</button>
-      </div>
-      <!-- /panel-all -->
-    </main>
-
-    <!-- 푸터 -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-links">
-          <a href="#" class="footer-link privacy">개인정보처리방침</a>
-          <a href="#" class="footer-link">이용약관</a>
-          <a href="#" class="footer-link">저작권보호 정책</a>
-          <a href="#" class="footer-link">이수증검증</a>
-          <a href="#" class="footer-link">원격도우미</a>
-        </div>
-
-        <div class="footer-logos">
-          <img src="https://placehold.co/83x32/e0e0e0/999999?text=MOE" alt="교육부" class="footer-logo" />
-          <img src="https://placehold.co/168x20/e0e0e0/999999?text=NILE" alt="국가평생교육진흥원" class="footer-logo" />
-        </div>
-
-        <div class="footer-content">
-          <div class="footer-nav">
-            <a href="#">K-MOOC소개</a>
-            <a href="#">전체메뉴</a>
-            <a href="#">커뮤니티</a>
-            <a href="#">사업공고</a>
-          </div>
-
-          <div class="footer-info">
-            <p>(07800) 서울특별시 강서구 마곡중앙로 105-7(K스퀘어 마곡 타워1)</p>
-            <p>
-              (Tel) 1811-3118
-              <span class="notice-text">※ 평일 9:00~18:00 운영 (점심시간 12:00~13:00 제외)</span>
-            </p>
-            <p>E-mail : info_kmooc@nile.or.kr</p>
-            <p class="copyright">COPYRIGHT © 2022 NATIONAL INSTITUTE FOR LIFELONG EDUCATION. ALL RIGHTS RESERVED</p>
-          </div>
-
-          <div class="footer-social">
-            <a href="#" class="social-link">
-              <img src="https://placehold.co/20x20/e0e0e0/999999?text=f" alt="Facebook" />
-              <span>Facebook</span>
-            </a>
-            <a href="#" class="social-link">
-              <img src="https://placehold.co/20x20/e0e0e0/999999?text=Y" alt="Youtube" />
-              <span>Youtube</span>
-            </a>
-            <a href="#" class="social-link">
-              <img src="https://placehold.co/20x20/e0e0e0/999999?text=I" alt="Instagram" />
-              <span>Instagram</span>
-            </a>
-            <a href="#" class="social-link">
-              <img src="https://placehold.co/20x20/e0e0e0/999999?text=B" alt="blog" />
-              <span>blog</span>
-            </a>
-          </div>
-
-          <div class="family-site">
-            <button class="family-site-btn">패밀리 사이트</button>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/popup-script.js"></script>
-  </body>
+  <script src="js/popup-script.js"></script>
+  <script src="js/script.js"></script>
+</body>
 </html>
