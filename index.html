@@ -1,364 +1,436 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>K-MOOC - 한국형 온라인 공개강좌</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="shortcut icon" type="image/x-icon" href="images/header_logo.png" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
-</head>
-<body>
-
-  <div class="skip-nav">
-    <a href="#main">본문 바로가기</a>
-  </div>
-
-  <div id="popupOverlay" class="popup-overlay" role="dialog" aria-modal="true">
-    <div class="popup-modal">
-      <div class="popup-body">
-        <h2 class="popup-title">알림</h2>
-        <p>이 프로젝트는 구직용 포트폴리오입니다.<br>K-MOOC 공식 사이트와는 무관합니다.</p>
-      </div>
-      <div class="popup-btns">
-        <button id="btnCancel" class="btn-sub">닫기</button>
-        <button id="btnHideToday" class="btn-main">오늘 하루 보이지 않기</button>
-      </div>
-      <button id="btnClose" class="popup-close" aria-label="닫기">&times;</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K-MOOC - 한국형 온라인 공개강좌</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="images/header_logo.png"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+  </head>
+  <body>
+    <div class="skip-nav">
+      <a href="#main">본문 바로가기</a>
     </div>
-  </div>
 
-  <header class="header">
-    <div class="container">
-      <h1 class="logo">
-        <a href="index.html"><span class="hidden">K-MOOC</span></a>
-      </h1>
-      <nav class="nav">
-        <ul class="gnb">
-          <li><a href="#">강좌</a></li>
-          <li><a href="#">매치업</a></li>
-          <li><a href="#">상시강좌</a></li>
-          <li><a href="#">학점은행</a></li>
-          <li><a href="#">커뮤니티</a></li>
-        </ul>
-      </nav>
-      <div class="util">
-        <a href="#" class="login-btn">로그인</a>
-        <a href="#" class="join-btn">회원가입</a>
-        <button class="m-menu-btn" aria-label="메뉴">&#9776;</button>
+    <div
+      id="popupOverlay"
+      class="popup-overlay"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="popup-modal">
+        <div class="popup-body">
+          <h2 class="popup-title">알림</h2>
+          <p>
+            이 프로젝트는 구직용 포트폴리오입니다.<br />K-MOOC 공식 사이트와는
+            무관합니다.
+          </p>
+        </div>
+        <div class="popup-btns">
+          <button id="btnCancel" class="btn-sub">닫기</button>
+          <button id="btnHideToday" class="btn-main">
+            오늘 하루 보이지 않기
+          </button>
+        </div>
+        <button id="btnClose" class="popup-close" aria-label="닫기">
+          &times;
+        </button>
       </div>
     </div>
-  </header>
 
-  <main id="main" class="main-content">
-    
-    <section class="visual-banner">
-      <div class="banner-box">
-        <img src="images/banner_2560.svg" alt="메인 배너" />
-      </div>
-    </section>
-
-    <section class="notice-bar">
-      <div class="container flex-start">
-        <div class="label-box">
-          <img src="images/ico_rolling_banner.png" alt="" />
-          <span>공지사항</span>
-        </div>
-        <div class="notice-slider">
-          <a href="#">[공고] 2025년 매치업(Match業) 우수사례 공모전 안내</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="search-section">
+    <header class="header">
       <div class="container">
-        <div class="search-box">
-          <h2>강좌 검색</h2>
-          <div class="form-wrapper">
-            <div class="input-group">
-              <input type="text" placeholder="배우고 싶은 강좌를 찾아보세요." />
-              <button type="button" class="search-submit">검색</button>
-            </div>
-            <div class="keywords">
-              <a href="#">#인공지능</a>
-              <a href="#">#디자인</a>
-              <a href="#">#프로그래밍</a>
-              <a href="#">#통계학</a>
-              <a href="#">#인문학</a>
+        <h1 class="logo">
+          <a href="index.html"><span class="hidden">K-MOOC</span></a>
+        </h1>
+        <nav class="nav">
+          <ul class="gnb">
+            <li><a href="#">강좌</a></li>
+            <li><a href="#">매치업</a></li>
+            <li><a href="#">상시강좌</a></li>
+            <li><a href="#">학점은행</a></li>
+            <li><a href="#">커뮤니티</a></li>
+          </ul>
+        </nav>
+        <div class="util">
+          <a href="#" class="login-btn">로그인</a>
+          <a href="#" class="join-btn">회원가입</a>
+          <button class="m-menu-btn" aria-label="메뉴">&#9776;</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main-content">
+      <section class="visual-banner">
+        <div class="banner-box">
+          <img src="images/banner_2560.svg" alt="메인 배너" />
+        </div>
+      </section>
+
+      <section class="notice-bar">
+        <div class="container flex-start">
+          <div class="label-box">
+            <img src="images/ico_rolling_banner.png" alt="" />
+            <span>공지사항</span>
+          </div>
+          <div class="notice-slider">
+            <a href="#">[공고] 2025년 매치업(Match業) 우수사례 공모전 안내</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-section">
+        <div class="container">
+          <div class="search-box">
+            <h2>강좌 검색</h2>
+            <div class="form-wrapper">
+              <div class="input-group">
+                <input
+                  type="text"
+                  placeholder="배우고 싶은 강좌를 찾아보세요."
+                />
+                <button type="button" class="search-submit">검색</button>
+              </div>
+              <div class="keywords">
+                <a href="#">#인공지능</a>
+                <a href="#">#디자인</a>
+                <a href="#">#프로그래밍</a>
+                <a href="#">#통계학</a>
+                <a href="#">#인문학</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section recommended">
-      <div class="container">
-        <h2 class="title"><span>K-MOOC</span> 추천 강좌</h2>
-        <div class="card-grid">
-          <article class="course-card">
-            <div class="thumb">
-              <img src="images/추천강좌1_1725258215.png" alt="" />
-              <span class="badge active">진행중</span>
-            </div>
-            <div class="info">
-              <h3>인공지능 시대의 언어학 입문</h3>
-              <p>송상헌 | 고려대학교</p>
-            </div>
-          </article>
-          <article class="course-card">
-            <div class="thumb">
-              <img src="images/추천강좌2_1703555520.png" alt="" />
-              <span class="badge active">진행중</span>
-            </div>
-            <div class="info">
-              <h3>일본 음식문화의 이해</h3>
-              <p>정의상 | 조선대학교</p>
-            </div>
-          </article>
-          <article class="course-card">
-            <div class="thumb">
-              <img src="images/추천강좌3_1762165355.jpg" alt="" />
-              <span class="badge active">진행중</span>
-            </div>
-            <div class="info">
-              <h3>환경의 역습! 원인과 우리의 대처</h3>
-              <p>배성준 | 건국대학교</p>
-            </div>
-          </article>
-          <article class="course-card">
-            <div class="thumb">
-              <img src="images/추천강좌4_1756426293.png" alt="" />
-              <span class="badge active">진행중</span>
-            </div>
-            <div class="info">
-              <h3>자율주행제어 이론 및 실습</h3>
-              <p>한경석 | 경북대학교</p>
-            </div>
-          </article>
+      <section class="section recommended">
+        <div class="container">
+          <h2 class="title"><span>K-MOOC</span> 추천 강좌</h2>
+          <div class="card-grid">
+            <article class="course-card">
+              <div class="thumb">
+                <img src="images/추천강좌1_1725258215.png" alt="" />
+                <span class="badge active">진행중</span>
+              </div>
+              <div class="info">
+                <h3>인공지능 시대의 언어학 입문</h3>
+                <p>송상헌 | 고려대학교</p>
+              </div>
+            </article>
+            <article class="course-card">
+              <div class="thumb">
+                <img src="images/추천강좌2_1703555520.png" alt="" />
+                <span class="badge active">진행중</span>
+              </div>
+              <div class="info">
+                <h3>일본 음식문화의 이해</h3>
+                <p>정의상 | 조선대학교</p>
+              </div>
+            </article>
+            <article class="course-card">
+              <div class="thumb">
+                <img src="images/추천강좌3_1762165355.jpg" alt="" />
+                <span class="badge active">진행중</span>
+              </div>
+              <div class="info">
+                <h3>환경의 역습! 원인과 우리의 대처</h3>
+                <p>배성준 | 건국대학교</p>
+              </div>
+            </article>
+            <article class="course-card">
+              <div class="thumb">
+                <img src="images/추천강좌4_1756426293.png" alt="" />
+                <span class="badge active">진행중</span>
+              </div>
+              <div class="info">
+                <h3>자율주행제어 이론 및 실습</h3>
+                <p>한경석 | 경북대학교</p>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section popular bg-light">
-      <div class="container">
-        <h2 class="title">서두르세요! <span>인기 강좌</span>가 곧 시작합니다.</h2>
-        <div class="card-grid-row">
-          <article class="course-item">
-            <div class="img"><img src="images/cosurelistviews_thumbnail_1718403339.jpg" alt="" /></div>
-            <div class="txt">
-              <h3>미생물학 입문</h3>
-              <p>2025.12.22 ~ 2026.01.30</p>
-            </div>
-          </article>
-          <article class="course-item">
-            <div class="img"><img src="images/cosurelistviews_thumbnail_1754964043.png" alt="" /></div>
-            <div class="txt">
-              <h3>AI와 챗GPT의 이해</h3>
-              <p>2025.10.20 ~ 2026.01.31</p>
-            </div>
-          </article>
-          <article class="course-item">
-            <div class="img"><img src="images/cosurelistviews_thumbnail_1756695008.png" alt="" /></div>
-            <div class="txt">
-              <h3>항공안전 및 보안</h3>
-              <p>2025.10.20 ~ 2026.01.31</p>
-            </div>
-          </article>
+      <section class="section popular bg-light">
+        <div class="container">
+          <h2 class="title">
+            서두르세요! <span>인기 강좌</span>가 곧 시작합니다.
+          </h2>
+          <div class="card-grid-row">
+            <article class="course-item">
+              <div class="img">
+                <img
+                  src="images/cosurelistviews_thumbnail_1718403339.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="txt">
+                <h3>미생물학 입문</h3>
+                <p>2025.12.22 ~ 2026.01.30</p>
+              </div>
+            </article>
+            <article class="course-item">
+              <div class="img">
+                <img
+                  src="images/cosurelistviews_thumbnail_1754964043.png"
+                  alt=""
+                />
+              </div>
+              <div class="txt">
+                <h3>AI와 챗GPT의 이해</h3>
+                <p>2025.10.20 ~ 2026.01.31</p>
+              </div>
+            </article>
+            <article class="course-item">
+              <div class="img">
+                <img
+                  src="images/cosurelistviews_thumbnail_1756695008.png"
+                  alt=""
+                />
+              </div>
+              <div class="txt">
+                <h3>항공안전 및 보안</h3>
+                <p>2025.10.20 ~ 2026.01.31</p>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section categories bg-light">
-      <div class="container">
-        <div class="drag-container" id="categoryDrag">
-          <div class="drag-track">
-            <div class="cat-card humanities active">
-              <div class="icon"><img src="images/thema_liberal.png" alt="인문" /></div>
-              <span>인문</span>
-            </div>
-            <div class="cat-card social">
-              <div class="icon"><img src="images/thema_social.png" alt="사회" /></div>
-              <span>사회</span>
-            </div>
-            <div class="cat-card education">
-              <div class="icon"><img src="images/thema_ico_education.png" alt="교육" /></div>
-              <span>교육</span>
-            </div>
-            <div class="cat-card engineering">
-              <div class="icon"><img src="images/thema_ico_engineering.png" alt="공학" /></div>
-              <span>공학</span>
-            </div>
-            <div class="cat-card natural">
-              <div class="icon"><img src="images/thema_ico_physical.png" alt="자연" /></div>
-              <span>자연</span>
-            </div>
-            <div class="cat-card medical">
-              <div class="icon"><img src="images/thema_ico_medical.png" alt="의약" /></div>
-              <span>의약</span>
-            </div>
-            <div class="cat-card arts">
-              <div class="icon"><img src="images/thema_ico_entertainment.png" alt="예체능" /></div>
-              <span>예체능</span>
-            </div>
-            <div class="cat-card convergence">
-              <div class="icon"><img src="images/thema_ico_convergence.png" alt="융복합" /></div>
-              <span>융복합</span>
-            </div>
-            <div class="cat-card etc">
-              <div class="icon"><img src="images/thema_ico_etc.png" alt="기타" /></div>
-              <span>기타</span>
+      <section class="section categories bg-light">
+        <div class="container">
+          <div class="drag-container" id="categoryDrag">
+            <div class="drag-track">
+              <div class="cat-card humanities active">
+                <div class="icon">
+                  <img src="images/thema_liberal.png" alt="인문" />
+                </div>
+                <span>인문</span>
+              </div>
+              <div class="cat-card social">
+                <div class="icon">
+                  <img src="images/thema_social.png" alt="사회" />
+                </div>
+                <span>사회</span>
+              </div>
+              <div class="cat-card education">
+                <div class="icon">
+                  <img src="images/thema_ico_education.png" alt="교육" />
+                </div>
+                <span>교육</span>
+              </div>
+              <div class="cat-card engineering">
+                <div class="icon">
+                  <img src="images/thema_ico_engineering.png" alt="공학" />
+                </div>
+                <span>공학</span>
+              </div>
+              <div class="cat-card natural">
+                <div class="icon">
+                  <img src="images/thema_ico_physical.png" alt="자연" />
+                </div>
+                <span>자연</span>
+              </div>
+              <div class="cat-card medical">
+                <div class="icon">
+                  <img src="images/thema_ico_medical.png" alt="의약" />
+                </div>
+                <span>의약</span>
+              </div>
+              <div class="cat-card arts">
+                <div class="icon">
+                  <img src="images/thema_ico_entertainment.png" alt="예체능" />
+                </div>
+                <span>예체능</span>
+              </div>
+              <div class="cat-card convergence">
+                <div class="icon">
+                  <img src="images/thema_ico_convergence.png" alt="융복합" />
+                </div>
+                <span>융복합</span>
+              </div>
+              <div class="cat-card etc">
+                <div class="icon">
+                  <img src="images/thema_ico_etc.png" alt="기타" />
+                </div>
+                <span>기타</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section micro">
-      <div class="container">
-        <h2 class="title">마이크로러닝 핵심 스킬</h2>
-        <div class="tags">
-          <button>#전기자기학</button>
-          <button>#의료인공지능</button>
-          <button>#문해력</button>
-          <button>#머신러닝</button>
-          <button>#빅데이터</button>
-        </div>
-        <div class="slider-wrapper" id="microSlider">
-          <div class="slider-container">
-            <div class="slider-track">
-              <article class="course-card">
-                <div class="thumb"><img src="images/5분만에" alt="" /></div>
-                <div class="info">
-                  <h3>5분 생활 보건</h3>
-                  <p>조회수 2,166 | 17회차</p>
-                </div>
-              </article>
-              <article class="course-card">
-                <div class="thumb"><img src="images/인공지능" alt="" /></div>
-                <div class="info">
-                  <h3>누구나 할 수 있는 AI 머신 러닝</h3>
-                  <p>조회수 4,488 | 35회차</p>
-                </div>
-              </article>
-              <article class="course-card">
-                <div class="thumb"><img src="images/왜 통계학" alt="" /></div>
-                <div class="info">
-                  <h3>경제통계학 1부</h3>
-                  <p>조회수 4,364 | 62회차</p>
-                </div>
-              </article>
-              <article class="course-card">
-                <div class="thumb"><img src="images/모바일 컴퓨터" alt="" /></div>
-                <div class="info">
-                  <h3>빅데이터와 인공지능 응용</h3>
-                  <p>조회수 1,720 | 12회차</p>
-                </div>
-              </article>
-              <article class="course-card">
-                <div class="thumb"><img src="images/cosurelistviews_thumbnail_1690969811.jpg" alt="" /></div>
-                <div class="info">
-                  <h3>응용유체역학</h3>
-                  <p>조회수 1,200 | 10회차</p>
-                </div>
-              </article>
-            </div>
+      <section class="section micro">
+        <div class="container">
+          <h2 class="title">마이크로러닝 핵심 스킬</h2>
+          <div class="tags">
+            <button>#전기자기학</button>
+            <button>#의료인공지능</button>
+            <button>#문해력</button>
+            <button>#머신러닝</button>
+            <button>#빅데이터</button>
           </div>
-          <button class="slider-btn prev">&lt;</button>
-          <button class="slider-btn next">&gt;</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shorts bg-blue">
-      <div class="container">
-        <h2 class="title">K-MOOC 숏폼 영상</h2>
-        <div class="slider-wrapper" id="shortsSlider">
-          <div class="slider-container">
-            <div class="slider-track">
-              <article class="shorts-card">
-                <video poster="images/tn_1.png"></video>
-                <div class="info">
-                  <h3>협동로봇 완전정복</h3>
-                  <p>서울디지털대학교</p>
-                </div>
-              </article>
-              <article class="shorts-card">
-                <video poster="images/tn_1 (1).png"></video>
-                <div class="info">
-                  <h3>공연 제작의 기본 단계</h3>
-                  <p>인천대학교</p>
-                </div>
-              </article>
-              <article class="shorts-card">
-                <video poster="images/tn_1 (5).png"></video>
-                <div class="info">
-                  <h3>스포츠 물리 치료의 이해</h3>
-                  <p>가톨릭관동대학교</p>
-                </div>
-              </article>
-              <article class="shorts-card">
-                <video poster="images/tn_1 (4).png"></video>
-                <div class="info">
-                  <h3>Praat: 스크립팅 기초</h3>
-                  <p>영남대학교</p>
-                </div>
-              </article>
-              <article class="shorts-card">
-                <video poster="images/tn_1 (2).png"></video>
-                <div class="info">
-                  <h3>데이터 분석 기초</h3>
-                  <p>부산대학교</p>
-                </div>
-              </article>
+          <div class="slider-wrapper" id="microSlider">
+            <div class="slider-container">
+              <div class="slider-track">
+                <article class="course-card">
+                  <div class="thumb"><img src="images/5분만에" alt="" /></div>
+                  <div class="info">
+                    <h3>5분 생활 보건</h3>
+                    <p>조회수 2,166 | 17회차</p>
+                  </div>
+                </article>
+                <article class="course-card">
+                  <div class="thumb"><img src="images/인공지능" alt="" /></div>
+                  <div class="info">
+                    <h3>누구나 할 수 있는 AI 머신 러닝</h3>
+                    <p>조회수 4,488 | 35회차</p>
+                  </div>
+                </article>
+                <article class="course-card">
+                  <div class="thumb"><img src="images/왜 통계학" alt="" /></div>
+                  <div class="info">
+                    <h3>경제통계학 1부</h3>
+                    <p>조회수 4,364 | 62회차</p>
+                  </div>
+                </article>
+                <article class="course-card">
+                  <div class="thumb">
+                    <img src="images/모바일 컴퓨터" alt="" />
+                  </div>
+                  <div class="info">
+                    <h3>빅데이터와 인공지능 응용</h3>
+                    <p>조회수 1,720 | 12회차</p>
+                  </div>
+                </article>
+                <article class="course-card">
+                  <div class="thumb">
+                    <img
+                      src="images/cosurelistviews_thumbnail_1690969811.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="info">
+                    <h3>응용유체역학</h3>
+                    <p>조회수 1,200 | 10회차</p>
+                  </div>
+                </article>
+              </div>
             </div>
+            <button class="slider-btn prev">&lt;</button>
+            <button class="slider-btn next">&gt;</button>
           </div>
-          <button class="slider-btn prev">&lt;</button>
-          <button class="slider-btn next">&gt;</button>
+        </div>
+      </section>
+
+      <section class="section shorts bg-blue">
+        <div class="container">
+          <h2 class="title">K-MOOC 숏폼 영상</h2>
+          <div class="slider-wrapper" id="shortsSlider">
+            <div class="slider-container">
+              <div class="slider-track">
+                <article class="shorts-card">
+                  <video poster="images/tn_1.png"></video>
+                  <div class="info">
+                    <h3>협동로봇 완전정복</h3>
+                    <p>서울디지털대학교</p>
+                  </div>
+                </article>
+                <article class="shorts-card">
+                  <video poster="images/tn_1 (1).png"></video>
+                  <div class="info">
+                    <h3>공연 제작의 기본 단계</h3>
+                    <p>인천대학교</p>
+                  </div>
+                </article>
+                <article class="shorts-card">
+                  <video poster="images/tn_1 (5).png"></video>
+                  <div class="info">
+                    <h3>스포츠 물리 치료의 이해</h3>
+                    <p>가톨릭관동대학교</p>
+                  </div>
+                </article>
+                <article class="shorts-card">
+                  <video poster="images/tn_1 (4).png"></video>
+                  <div class="info">
+                    <h3>Praat: 스크립팅 기초</h3>
+                    <p>영남대학교</p>
+                  </div>
+                </article>
+                <article class="shorts-card">
+                  <video poster="images/tn_1 (2).png"></video>
+                  <div class="info">
+                    <h3>데이터 분석 기초</h3>
+                    <p>부산대학교</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <button class="slider-btn prev">&lt;</button>
+            <button class="slider-btn next">&gt;</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="f-top">
+          <div class="f-logo">K-MOOC</div>
+          <div class="f-links">
+            <a href="#" class="privacy">개인정보처리방침</a>
+            <a href="#">이용약관</a>
+            <a href="#">저작권보호 정책</a>
+            <a href="#">이수증검증</a>
+            <a href="#">원격도우미</a>
+          </div>
+          <div class="f-sns">
+            <a href="#" class="sns-link fb" title="Facebook">FB</a>
+            <a href="#" class="sns-link yt" title="Youtube">YT</a>
+            <a href="#" class="sns-link ig" title="Instagram">IG</a>
+          </div>
+        </div>
+        <div class="f-mid">
+          <div class="f-info">
+            <p>
+              (07800) 서울특별시 강서구 마곡중앙로 105-7(K스퀘어 마곡 타워1)
+            </p>
+            <p>고객센터: <strong>1811-3118</strong> (평일 09:00~18:00)</p>
+            <p>E-mail: info_kmooc@nile.or.kr</p>
+          </div>
+          <div class="f-partners">
+            <img
+              src="https://placehold.co/80x30/333/fff?text=MOE"
+              alt="교육부"
+            />
+            <img
+              src="https://placehold.co/120x30/333/fff?text=NILE"
+              alt="국가평생교육진흥원"
+            />
+          </div>
+        </div>
+        <div class="f-bottom">
+          <p class="copy">
+            COPYRIGHT © 2022 NATIONAL INSTITUTE FOR LIFELONG EDUCATION. ALL
+            RIGHTS RESERVED
+          </p>
         </div>
       </div>
-    </section>
+    </footer>
 
-  </main>
+    <button class="to-top-btn" id="toTop">↑</button>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="f-top">
-        <div class="f-logo">K-MOOC</div>
-        <div class="f-links">
-          <a href="#" class="privacy">개인정보처리방침</a>
-          <a href="#">이용약관</a>
-          <a href="#">저작권보호 정책</a>
-          <a href="#">이수증검증</a>
-          <a href="#">원격도우미</a>
-        </div>
-        <div class="f-sns">
-          <a href="#" class="sns-link fb" title="Facebook">FB</a>
-          <a href="#" class="sns-link yt" title="Youtube">YT</a>
-          <a href="#" class="sns-link ig" title="Instagram">IG</a>
-        </div>
-      </div>
-      <div class="f-mid">
-        <div class="f-info">
-          <p>(07800) 서울특별시 강서구 마곡중앙로 105-7(K스퀘어 마곡 타워1)</p>
-          <p>고객센터: <strong>1811-3118</strong> (평일 09:00~18:00)</p>
-          <p>E-mail: info_kmooc@nile.or.kr</p>
-        </div>
-        <div class="f-partners">
-          <img src="https://placehold.co/80x30/333/fff?text=MOE" alt="교육부" />
-          <img src="https://placehold.co/120x30/333/fff?text=NILE" alt="국가평생교육진흥원" />
-        </div>
-      </div>
-      <div class="f-bottom">
-        <p class="copy">COPYRIGHT © 2022 NATIONAL INSTITUTE FOR LIFELONG EDUCATION. ALL RIGHTS RESERVED</p>
-      </div>
-    </div>
-  </footer>
-
-  <button class="to-top-btn" id="toTop">↑</button>
-
-  <script src="js/popup-script.js"></script>
-  <script src="js/script.js"></script>
-</body>
+    <script src="js/popup-script.js"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
